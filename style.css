@@ -1,10 +1,45 @@
 body {
-    text-align: center;
-    font-family: 'Roboto Mono', monospace;
-    margin: 0 auto;
+
+    font-family: 'Rubik', sans-serif;
+
 }
 
-h1 {
+h1, h2 {
+    text-align: center;
     text-transform: uppercase;
 }
 
+
+
+img {
+    width: 20%;
+}
+
+input {
+    letter-spacing: 0.2em;
+    font-size: 12px;
+    width: auto;
+    padding: 1em;
+    border: 1px #fff solid;
+    border-radius: 200px;
+    border-color: #000;
+    color: #000;
+    text-transform: uppercase;
+    transition: ease-in-out .33s;
+    margin: 5px;
+}
+
+input:hover {
+    text-decoration: none;
+    background-color: #000;
+    border-color: #CFEC3A;
+    color: #CFEC3A;
+    cursor: pointer;
+
+}
+
+#container {
+    width: 1140px;
+    margin: 0 auto;
+
+}
