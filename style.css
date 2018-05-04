@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0 auto;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
