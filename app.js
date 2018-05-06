@@ -1,52 +1,69 @@
-$(function() {
+$(function () {
 
-    // url
-    var pokemonApiUrl = "https://pokeapi.co/api/v2/generation/3";
-    var pokemonByName = "https://pokeapi.co/api/v2/pokemon/";
+    // Pokemon Search Bar
+    var pokemonSearchBar = document.getElementById('pokemon-search');
 
-    // console.log(pokemonApiUrl);
+    $(pokemonSearchBar).on("keypress", function (event) {
 
-    // data returns pokemon info
-    $.getJSON(pokemonApiUrl, function(data) {
-        $.each(data.pokemon_species, function(index, pokemon) {
+        if (event.which == 13) {
 
-            var pokemonDiv = document.getElementById('pokemon');
+            var value = this.value;
+            var pokemonDescription = "https://pokeapi.co/api/v2/pokemon-species/"
+                + value;
 
-            // console.log(data);
-
-            // Capitalizes first letter in every pokemon name
-            // without it, pokemon name would stay lowercase
-            var name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+            var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
+                + value;
 
 
-            // creates 'a' tag
-            // with id and href attribute
-            var pokemonLink = $("<input>")
-                .attr("type", "button")
-                .attr("value", "Pokemon No." + (index + 1) + " is " + name)
-                .attr("id", pokemon.name)
-                .attr("href", "#");
+            $.getJSON(pokemonByName, function (details) {
+                console.log(details);
 
-            // When a pokemon name is clicked
-            // shows name and image of that pokemon
-            pokemonLink.click(function(event) {
-                $.getJSON(pokemonByName + pokemon.name, function(details) {
+                // Makes div tag with pokemon info
+                var pokemonInfoDiv = $('#pokemon-info')
 
-                    console.log(details);
-                    var pokemonInfoDiv = $('#pokemon-info')
+                // Hides previous results
+                document.getElementById('pokemon-info').innerHTML = "";
 
-                    // Hides previous results
-                    document.getElementById('pokemon-info').innerHTML = "";
-                    
-                    pokemonInfoDiv.append('<h3>' + name + '</h3>');
-                    pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
-                    pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
+                // Shows Pokemon Name
+                pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
+
+                // Shows Pokemon's Type
+                pokemonInfoDiv.append('<p>' + details.types[0].type.name + '</p>');
+                //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
+
+                // Shows Pokemon Dex. Entry
+                pokemonInfoDiv.append('<p>' + details.game_indices[0].game_index + '</p>');
+
+                // Shows Pokemon Sprite & Shiny 
+                pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
+                pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
+
+
+
+                $.getJSON(pokemonDescription, function (descriptions) {
+                    console.log(descriptions);
+
+                    // Shows Pokemon Description
+                    pokemonInfoDiv.append('<p>' + descriptions.flavor_text_entries[1].flavor_text + '</p>');
+
+
                 });
             });
-
-            // a tags inside div append towards the div id #pokemon
-            pokemonLink.appendTo(pokemonDiv);
-
-        });
+        };
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
