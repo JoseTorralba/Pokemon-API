@@ -18,7 +18,6 @@ $(function () {
             $.getJSON(pokemonByName, function (details) {
                 console.log(details);
 
-                // Makes div tag with pokemon info
                 var pokemonInfoDiv = $('#pokemon-info')
 
                 // Hides previous results
