@@ -30,15 +30,17 @@ $(function () {
                 pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
 
                 // Shows Pokemon's Type
-                pokemonInfoDiv.append('<p>' + details.types[0].type.name + '</p>');
+                pokemonInfoDiv.append('<p>' + 'Pokemon Type: ' + details.types[0].type.name + '</p>');
                 //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
 
                 // Shows Pokemon Dex. Entry
-                pokemonInfoDiv.append('<p>' + details.game_indices[0].game_index + '</p>');
+                pokemonInfoDiv.append('<p>' + 'Pokemon Dex. Entry No. ' + details.game_indices[0].game_index + '</p>');
 
                 // Shows Pokemon Sprite & Shiny 
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
+                pokemonInfoDiv.append("<img src='" + details.sprites.back_default + "'>")
+                pokemonInfoDiv.append("<img src='" + details.sprites.back_shiny + "'>")
 
 
 
