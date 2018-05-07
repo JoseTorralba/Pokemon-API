@@ -18,10 +18,13 @@ $(function () {
             $.getJSON(pokemonByName, function (details) {
                 console.log(details);
 
-                var pokemonInfoDiv = $('#pokemon-info')
+                // Gets element by id
+                var pokemonInfoDiv = $('#pokemon-info');
 
                 // Hides previous results
                 document.getElementById('pokemon-info').innerHTML = "";
+
+                document.getElementById('pokemon-info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
 
                 // Shows Pokemon Name
                 pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
@@ -51,18 +54,4 @@ $(function () {
         };
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
