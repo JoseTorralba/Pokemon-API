@@ -30,6 +30,7 @@ $(function () {
                 pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
 
                 // Shows Pokemon's Type
+                // prob need to make loop or if for it to work properly
                 pokemonInfoDiv.append('<p>' + 'Pokemon Type: ' + details.types[0].type.name + '</p>');
                 //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
 
@@ -39,8 +40,6 @@ $(function () {
                 // Shows Pokemon Sprite & Shiny 
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
-                pokemonInfoDiv.append("<img src='" + details.sprites.back_default + "'>")
-                pokemonInfoDiv.append("<img src='" + details.sprites.back_shiny + "'>")
 
 
 
