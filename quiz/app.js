@@ -1,9 +1,9 @@
 $(function () {
-    // Gets Input & Button Back by ID
+
+    // Pokemon Search Bar
     var pokemonSearchBar = document.getElementById('pokemon-search');
     var pokemonRandomButton = document.getElementById('random-pokemon');
 
-    // Pokemon Search Bar
     $(pokemonSearchBar).on("keypress", function (event) {
 
         if (event.which == 13) {
@@ -14,7 +14,8 @@ $(function () {
 
             var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
                 + value;
-            
+
+
             $.getJSON(pokemonByName, function (details) {
                 console.log(details);
 
@@ -27,9 +28,7 @@ $(function () {
                 document.getElementById('pokemon-info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
 
                 // Shows Pokemon Name
-                var name = document.createElement('h3');
-                name.textContent = details.species.name;
-                pokemonInfoDiv.append(name);
+                pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
 
                 // Shows Pokemon's Type
                 // prob need to make loop or if for it to work properly
@@ -42,6 +41,8 @@ $(function () {
                 // Shows Pokemon Sprite & Shiny 
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
                 pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
+
+
 
                 $.getJSON(pokemonDescription, function (descriptions) {
                     console.log(descriptions);
@@ -57,6 +58,9 @@ $(function () {
 
     // Random Pokemon Button
     $(pokemonRandomButton).click(function (event) {
+
+        console.log(pokemonRandomButton);
+
  
             var randomPokemon = Math.round(Math.random() * 100);
             var pokemonDescription = "https://pokeapi.co/api/v2/pokemon-species/"
@@ -103,5 +107,6 @@ $(function () {
             });
         });
     });
+
 });
 

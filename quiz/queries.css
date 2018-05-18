@@ -1,0 +1,53 @@
+/* Big Tablet to 1200px Widths smaller than 1140px row */
+@media only screen and (max-width: 1200px) {
+
+
+}
+/* Small Tablet to Big Tablets from 768px - 1023px */
+@media only screen and (max-width: 1023px) {
+
+    header p { 
+        width: 80%;
+    }
+
+
+    #container { 
+        width: 80%;
+    }
+
+    input {
+
+    }
+
+
+}
+
+/* Small Phones to Small Tablets from 481px - 767px */
+@media only screen and (max-width: 767px) {
+    
+    
+    h1 {
+        font-size: 4em;
+    }
+    
+    header p { 
+        width: 80%;
+
+    }
+
+
+    #container { 
+        width: 80%;
+    }
+
+    input {
+    
+    }
+
+}
+
+/* Small Phones from 0px - 480px */
+@media only screen and (max-width: 480px) {
+    
+
+}
