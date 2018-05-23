@@ -1,112 +1,109 @@
-$(function () {
+// Array of Correct Responses
+var correctMessages = [
+    'YASSS QUEEN',
+    'SLAYYYYYYYY',
+    'nicee'
+];
 
-    // Pokemon Search Bar
-    var pokemonSearchBar = document.getElementById('pokemon-search');
-    var pokemonRandomButton = document.getElementById('random-pokemon');
+// Array of Wrong Responses
+var wrongMessages = [
+    "you're trash",
+    'go watch the show or something',
+    'google it my guy'
+];
 
-    $(pokemonSearchBar).on("keypress", function (event) {
+$(document).ready(function() {
 
-        if (event.which == 13) {
+    // Random Pokemon
+    var offset = Math.round(Math.random() * 300);
+    
+    // Pokemon API Url
+    var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
+        +offset;
 
-            var value = this.value;
-            var pokemonDescription = "https://pokeapi.co/api/v2/pokemon-species/"
-                + value;
+    $.getJSON(pokemonByName, function (details) {
+        console.log(details);
 
-            var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
-                + value;
+        // Gets element by id
+        var pokemonInfoDiv = $('#pokemon-info');
+        var pokemonButtonName = $('#pokemon-names');
 
+        // Hides previous results
+        document.getElementById('pokemon-info').innerHTML = "";
 
-            $.getJSON(pokemonByName, function (details) {
-                console.log(details);
+        // Adds Transparent Background
+        document.getElementById('pokemon-info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
 
-                // Gets element by id
-                var pokemonInfoDiv = $('#pokemon-info');
+        // Shows Pokemon Sprite
+        pokemonInfoDiv.append("<img id='img' src='" + details.sprites.front_default + "'>")
 
-                // Hides previous results
-                document.getElementById('pokemon-info').innerHTML = "";
+        // Shows Pokemon Name
+        var name = details.species.name;
 
-                document.getElementById('pokemon-info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
+        $.getJSON('pokemons.json', function (pokemons) {
 
-                // Shows Pokemon Name
-                pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
+            // n randomizes button position
+            var n = Math.floor(Math.random() * 5);
+            for (var i = 0; i < 6; i++) {
+                if (n == i) {
+                    // Shows correct pokemon name
+                    pokemonButtonName.append('<button id="correct">' + name + '</button>');
+                    
+                } else {
+                    // Shows Pokemon Name
+                    var r = Math.floor(Math.random() * pokemons.length);
+                    
+                    // Creates Buttons with Wrong Pokemon
+                    var wrongButton = document.createElement('button');
+                    wrongButton.textContent = pokemons[r];
+                    wrongButton.id = "btn" + [i];
+                    pokemonButtonName.append(wrongButton);
+                }
+            }
 
-                // Shows Pokemon's Type
-                // prob need to make loop or if for it to work properly
-                pokemonInfoDiv.append('<p>' + 'Pokemon Type: ' + details.types[0].type.name + '</p>');
-                //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
-
-                // Shows Pokemon Dex. Entry
-                pokemonInfoDiv.append('<p>' + 'Pokemon Dex. Entry No. ' + details.game_indices[0].game_index + '</p>');
-
-                // Shows Pokemon Sprite & Shiny 
-                pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
-                pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
-
-
-
-                $.getJSON(pokemonDescription, function (descriptions) {
-                    console.log(descriptions);
-
-                    // Shows Pokemon Description
-                    pokemonInfoDiv.append('<p>' + descriptions.flavor_text_entries[1].flavor_text + '</p>');
-
-
-                });
-            });
-        };
-    });
-
-    // Random Pokemon Button
-    $(pokemonRandomButton).click(function (event) {
-
-        console.log(pokemonRandomButton);
-
- 
-            var randomPokemon = Math.round(Math.random() * 100);
-            var pokemonDescription = "https://pokeapi.co/api/v2/pokemon-species/"
-                + randomPokemon;
-
-            var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
-                + randomPokemon;
-
-
-            $.getJSON(pokemonByName, function (details) {
-                console.log(details);
+            // Gets Elements by ID
+            var message = document.getElementById('message');
+            var retry = document.getElementById('retry');
+            var correctPokemon = document.getElementById('correct');
+            
+            // When User Clicks on the Right Pokemon
+            correctPokemon.onclick = function() {
                 
-                // Gets element by id
-                var pokemonInfoDiv = $('#pokemon-info');
+                // Removes Filter from Image
+                document.getElementById('img').style.filter = 'none';
 
-                // Hides previous results
-                document.getElementById('pokemon-info').innerHTML = "";
-                document.getElementById('pokemon-info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
+                // Displays one of the correct messages
+                message.textContent = correctMessages[Math.floor(Math.random() * correctMessages.length)];;
 
-                // Shows Pokemon Name
-                pokemonInfoDiv.append('<h3>' + details.species.name + '</h3>');
+                // Displays Retry Button
+                retry.style.display = "block";
+            };
 
-                // Shows Pokemon's Type
-                // prob need to make loop or if for it to work properly
-                pokemonInfoDiv.append('<p>' + 'Pokemon Type: ' + details.types[0].type.name + '</p>');
-                //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
+            // When User Clicks on the Wrong Pokemon
+            // Displays one of the wrong messages
+            document.getElementById('btn0').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
 
-                // Shows Pokemon Dex. Entry
-                pokemonInfoDiv.append('<p>' + 'Pokemon Dex. Entry No. ' + details.game_indices[0].game_index + '</p>');
+            document.getElementById('btn1').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
 
-                // Shows Pokemon Sprite & Shiny 
-                pokemonInfoDiv.append("<img src='" + details.sprites.front_default + "'>")
-                pokemonInfoDiv.append("<img src='" + details.sprites.front_shiny + "'>")
+            document.getElementById('btn2').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
 
+            document.getElementById('btn3').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
 
+            document.getElementById('btn4').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
 
-                $.getJSON(pokemonDescription, function (descriptions) {
-                    console.log(descriptions);
-
-                    // Shows Pokemon Description
-                    pokemonInfoDiv.append('<p>' + descriptions.flavor_text_entries[1].flavor_text + '</p>');
-
-
-            });
+            document.getElementById('btn5').onclick = function() {
+                message.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
+            };
         });
     });
-
 });
-
