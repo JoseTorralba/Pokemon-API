@@ -1,0 +1,22 @@
+.input {
+    font-size: 1.5rem;
+    width: 60%;
+    padding: 1.5rem 1rem;
+    margin: 2rem 0;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 2px;
+    transition: all .3s;
+
+    &:focus {
+        outline: none;
+        color: $color-yellow;
+        background-color: $color-blue;
+        box-shadow: 0 1rem 2rem rgba($color-black, .1);
+        border-bottom: 3px solid $color-yellow;
+    }
+
+    &:focus::placeholder {
+        color: $color-yellow;
+    }
+}
