@@ -91,7 +91,7 @@ body {
   margin-top: 3rem; }
   .poke-box__side {
     height: 42rem;
-    transition: all .8s ease;
+    transition: all .5s ease;
     position: absolute;
     top: 0;
     left: 0;
