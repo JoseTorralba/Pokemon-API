@@ -12,10 +12,10 @@ $(function () {
         if (event.which == 13) {
 
             var value = this.value;
-            var pokemonDescription = "https://crossorigin.me/https://pokeapi.co/api/v2/pokemon-species/"
+            var pokemonDescription = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon-species/"
                 + value;
 
-            var pokemonByName = "https://crossorigin.me/https://pokeapi.co/api/v2/pokemon/"
+            var pokemonByName = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon/"
                 + value;
             
             $.getJSON(pokemonByName, function (details) {
