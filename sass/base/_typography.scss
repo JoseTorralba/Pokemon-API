@@ -19,6 +19,7 @@ body {
 .primary-heading {
     font-size: 4rem;
     text-transform: uppercase;
+    padding-top: 2rem;
 
     &:after {
         display: block;
@@ -33,6 +34,8 @@ body {
 
 .sub-text {
     font-size: 1.6rem;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .secondary-heading {

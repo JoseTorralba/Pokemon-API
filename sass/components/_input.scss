@@ -8,6 +8,10 @@
     border-radius: 2px;
     transition: all .3s;
 
+    @include respond(tablet-portrait) {
+        margin-top: 4rem;
+    }
+
     &:focus {
         outline: none;
         color: $color-yellow;

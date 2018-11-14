@@ -7,6 +7,18 @@
 
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 .text-center {
   text-align: center; }
@@ -27,7 +39,8 @@ body {
 
 .primary-heading {
   font-size: 4rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  padding-top: 2rem; }
   .primary-heading:after {
     display: block;
     height: 2px;
@@ -38,7 +51,9 @@ body {
     margin-bottom: 2rem; }
 
 .sub-text {
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  width: 80%;
+  margin: 0 auto; }
 
 .secondary-heading {
   font-size: 2.5rem; }
@@ -53,6 +68,7 @@ body {
   text-transform: capitalize;
   padding: 1rem 1.2rem;
   font-size: 1.6rem;
+  font-weight: inherit;
   border-radius: 5rem;
   border: none;
   outline: none;
@@ -73,6 +89,9 @@ body {
   border-bottom: 3px solid transparent;
   border-radius: 2px;
   transition: all .3s; }
+  @media only screen and (max-width: 56.25em) {
+    .input {
+      margin-top: 4rem; } }
   .input:focus {
     outline: none;
     color: #fff322;
@@ -86,9 +105,10 @@ body {
   perspective: 150rem;
   position: relative;
   height: 42rem;
-  width: calc((100% - 5 * 6rem) / 3);
-  margin: 0 auto;
   margin-top: 3rem; }
+  @media only screen and (max-width: 56.25em) {
+    .poke-box {
+      margin-top: 6rem; } }
   .poke-box__side {
     height: 42rem;
     transition: all .5s ease;
@@ -99,6 +119,12 @@ body {
     backface-visibility: hidden;
     border-radius: 10px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    @media only screen and (max-width: 56.25em) {
+      .poke-box__side {
+        height: 48rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .poke-box__side {
+        height: 35rem; } }
     .poke-box__side--front {
       background-color: #fff;
       background-image: url(../img/poke-card.png);
@@ -144,14 +170,37 @@ body {
     content: "";
     display: table;
     clear: both; }
-
-section {
-  padding: 2.5rem 0; }
+  .row [class^="col-"]:not(:last-child) {
+    margin-right: 6rem; }
+    @media only screen and (max-width: 56.25em) {
+      .row [class^="col-"]:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .row [class^="col-"] {
+      width: 35% !important; } }
+  @media only screen and (max-width: 25.875em) {
+    .row [class^="col-"] {
+      width: 55% !important; } }
+  .row .col-1-of-3 {
+    width: calc((100% - 5 * 6rem) / 3);
+    margin: 0 auto; }
 
 .poke-info__img {
   margin-top: -2rem;
   width: 25%;
   filter: contrast(0%) brightness(50%); }
+  @media only screen and (max-width: 56.25em) {
+    .poke-info__img {
+      width: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    .poke-info__img {
+      margin-top: 2rem;
+      width: 80%; } }
+
+@media only screen and (max-width: 37.5em) {
+  .poke-names .btn {
+    margin-bottom: 3rem; } }
 
 .poke-text {
   font-size: 2rem;

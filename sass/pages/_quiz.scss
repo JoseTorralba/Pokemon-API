@@ -1,17 +1,31 @@
+// Pokemon info div containing img
 .poke-info {
-
     &__img {
         margin-top: -2rem;
         width: 25%;
         filter: contrast(0%) brightness(50%);
 
+        @include respond(tablet-portrait) {
+            width: 50%;
+        }
+
+        @include respond(phone) {
+            margin-top: 2rem;
+            width: 80%;
+        }
     }
 }
 
+// Pokemon Buttons
 .poke-names {
-
+    .btn {
+        @include respond(phone) {
+            margin-bottom: 3rem;
+        }
+    }
 }
 
+// Text that appears when you chose a pokemon
 .poke-text {
     font-size: 2rem;
     text-transform: capitalize;
@@ -19,11 +33,11 @@
     color: $color-yellow
 }
 
+// Retry button
 .poke-retry {
     display: none;
     margin-top: 2.5em;
 }
-
 
 /* Spinner Animation */
 .poke-spinner:before {
@@ -42,6 +56,7 @@
     animation: spinner 0.7s linear infinite;
 }
 
+// Loading effect 
 @keyframes spinner {
     to { transform: rotate(360deg); }
 }

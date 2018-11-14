@@ -2,11 +2,11 @@
     perspective: 150rem;
     position: relative;
     height: 42rem;
-
-    // Basically col-1-of-3
-    width: calc((100% - 5 * #{$gutter-horizontal}) / 3);
-    margin: 0 auto;
     margin-top: 3rem;
+
+    @include respond(tablet-portrait) {
+        margin-top: 6rem;
+    }
 
     &__side {
         height: 42rem;
@@ -20,6 +20,14 @@
         backface-visibility: hidden;
         border-radius: 10px;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        @include respond(tablet-portrait) {
+            height: 48rem;
+        }
+
+        @include respond(phone) {
+            height: 35rem;
+        }
 
         &--front {
             background-color: $color-white;
@@ -67,7 +75,6 @@
         margin: 0 auto;
         padding-top: .5rem;
         padding-bottom: .5rem;
-
     }
 
     // for pokemon info

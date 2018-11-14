@@ -1,5 +1,4 @@
 .btn {
-
     &:not(:last-child) {
         margin-right: 1.5rem;
     }
@@ -13,8 +12,8 @@
         text-transform: capitalize;
         padding: 1rem 1.2rem;
         font-size: 1.6rem;
+        font-weight: inherit;
         border-radius: 5rem;
-
         // for button
         border: none;
         outline: none;

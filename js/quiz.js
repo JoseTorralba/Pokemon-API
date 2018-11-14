@@ -17,7 +17,7 @@ $(document).ready(function() {
     var offset = Math.round(Math.random() * 300);
 
     // Pokemon API Url
-    var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
+    var pokemonByName = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon/"
         +offset;
 
     // PokeAPI
@@ -114,7 +114,6 @@ $(document).ready(function() {
             document.getElementById('btn5').onclick = function() {
                 pokeText.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];;
             };
-
         });
     });
 });
