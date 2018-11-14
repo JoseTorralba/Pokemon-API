@@ -80,10 +80,10 @@ $(function () {
     $(pokemonRandomButton).click(function (event) {
 
             var randomPokemon = Math.round(Math.random() * 100);
-            var pokemonDescription = "https://pokeapi.co/api/v2/pokemon-species/"
+            var pokemonDescription = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon-species/"
                 + randomPokemon;
 
-            var pokemonByName = "https://pokeapi.co/api/v2/pokemon/"
+            var pokemonByName = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon/"
                 + randomPokemon;
 
             $.getJSON(pokemonByName, function (details) {
