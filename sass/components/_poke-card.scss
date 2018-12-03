@@ -4,13 +4,12 @@
     height: 42rem;
 
     @include respond(tablet-portrait) {
-        margin-top: 6rem;
+        margin-top: 0;
     }
 
     &__side {
         height: 42rem;
         transition: all .5s ease;
-    
         // needed for card to stack
         position: absolute;
         top: 0;
@@ -21,12 +20,21 @@
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
         @include respond(tablet-portrait) {
-            height: 48rem;
+            height: 40rem;
+            width: 55%;
+            margin-left: 25%;
         }
 
         @include respond(phone) {
-            height: 35rem;
-        }
+            width: 55% !important;
+            height: 40rem;
+        }   
+
+        @include respond(smaller-phone) {
+            width: 75% !important;
+            height: 40rem;
+            margin-left: 14%;
+        }   
 
         &--front {
             background-color: $color-white;

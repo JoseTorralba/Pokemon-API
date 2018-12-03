@@ -12,6 +12,10 @@
         margin-top: 4rem;
     }
 
+    @include respond(smaller-phone) {
+        width: 95%;
+    }   
+
     &:focus {
         outline: none;
         color: $color-yellow;

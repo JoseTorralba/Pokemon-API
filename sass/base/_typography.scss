@@ -39,6 +39,10 @@ body {
 
 .text-box {
     margin-bottom: 4rem;
+
+    @include respond(tablet-portrait) {
+        margin-bottom: 0;
+    }
 }
 
 .sub-text {
