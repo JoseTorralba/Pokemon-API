@@ -23,6 +23,13 @@ html {
 .text-center {
   text-align: center; }
 
+.text-left {
+  text-align: left; }
+
+.header-margin {
+  margin-top: 3rem;
+  margin-bottom: 8rem; }
+
 body {
   font-family: 'Rubik', sans-serif;
   font-weight: 100;
@@ -30,7 +37,6 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   background-image: url("../img/pokemon-bg-night.jpg"), linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%), linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-  text-align: center;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: center;
@@ -38,6 +44,7 @@ body {
   height: 100vh; }
 
 .primary-heading {
+  text-align: center;
   font-size: 4rem;
   text-transform: uppercase;
   padding-top: 2rem; }
@@ -50,13 +57,17 @@ body {
     margin: 0 auto;
     margin-bottom: 2rem; }
 
-.sub-text {
-  font-size: 1.6rem;
-  width: 80%;
-  margin: 0 auto; }
-
 .secondary-heading {
   font-size: 2.5rem; }
+
+.text-box {
+  margin-bottom: 4rem; }
+
+.sub-text {
+  font-size: 1.7rem;
+  font-weight: 400; }
+  .sub-text:not(:last-child) {
+    margin-bottom: 1.5rem; }
 
 .btn:not(:last-child) {
   margin-right: 1.5rem; }
@@ -82,9 +93,9 @@ body {
 
 .input {
   font-size: 1.5rem;
-  width: 60%;
+  width: 100%;
   padding: 1.5rem 1rem;
-  margin: 2rem 0;
+  margin-bottom: 2.5rem;
   border: none;
   border-bottom: 3px solid transparent;
   border-radius: 2px;
@@ -101,15 +112,14 @@ body {
   .input:focus::placeholder {
     color: #fff322; }
 
-.poke-box {
+.poke-card {
   perspective: 150rem;
   position: relative;
-  height: 42rem;
-  margin-top: 3rem; }
+  height: 42rem; }
   @media only screen and (max-width: 56.25em) {
-    .poke-box {
+    .poke-card {
       margin-top: 6rem; } }
-  .poke-box__side {
+  .poke-card__side {
     height: 42rem;
     transition: all .5s ease;
     position: absolute;
@@ -120,25 +130,25 @@ body {
     border-radius: 10px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
     @media only screen and (max-width: 56.25em) {
-      .poke-box__side {
+      .poke-card__side {
         height: 48rem; } }
     @media only screen and (max-width: 37.5em) {
-      .poke-box__side {
+      .poke-card__side {
         height: 35rem; } }
-    .poke-box__side--front {
+    .poke-card__side--front {
       background-color: #fff;
       background-image: url(../img/poke-card.png);
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover; }
-    .poke-box__side--back {
+    .poke-card__side--back {
       transform: rotateY(180deg);
       background-color: #1D2087; }
-  .poke-box:hover .poke-box__side--front {
+  .poke-card:hover .poke-card__side--front {
     transform: rotateY(-180deg); }
-  .poke-box:hover .poke-box__side--back {
+  .poke-card:hover .poke-card__side--back {
     transform: rotateY(0); }
-  .poke-box__cta {
+  .poke-card__cta {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -146,19 +156,19 @@ body {
     width: 90%;
     text-align: center;
     color: #fff322; }
-  .poke-box__heading {
+  .poke-card__heading {
     font-size: 2.5rem;
     text-transform: uppercase;
     padding-bottom: 1rem; }
-  .poke-box__img {
+  .poke-card__img {
     width: 40%;
     margin: 0 auto;
     padding-top: .5rem;
     padding-bottom: .5rem; }
-  .poke-box__text {
+  .poke-card__text {
     font-size: 1.6rem;
     text-transform: capitalize; }
-  .poke-box__desc {
+  .poke-card__desc {
     font-size: 1.4rem; }
 
 .row {
@@ -170,21 +180,19 @@ body {
     content: "";
     display: table;
     clear: both; }
-  .row [class^="col-"]:not(:last-child) {
-    margin-right: 6rem; }
-    @media only screen and (max-width: 56.25em) {
-      .row [class^="col-"]:not(:last-child) {
-        margin-right: 0;
-        margin-bottom: 6rem; } }
-  @media only screen and (max-width: 56.25em) {
-    .row [class^="col-"] {
-      width: 35% !important; } }
-  @media only screen and (max-width: 25.875em) {
-    .row [class^="col-"] {
-      width: 55% !important; } }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+      @media only screen and (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
   .row .col-1-of-3 {
-    width: calc((100% - 5 * 6rem) / 3);
-    margin: 0 auto; }
+    width: calc((100% - 5 * 6rem) / 3); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem);
+    padding-right: 20rem; }
 
 .poke-info__img {
   margin-top: -2rem;

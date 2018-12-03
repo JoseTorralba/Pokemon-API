@@ -14,45 +14,46 @@
 </head>
 <body>
     <section>
-        <!-- Headings -->
-        <div class="text-center">
-            <h1 class="primary-heading">
-                Pokemon api
-            </h1>
-
-            <p class="sub-text">
-                Search any pokemon and enter below. You'll get a card, hover over it and you'll get information on it.
-            </p>
-
-            <p class="sub-text">
-                You can also test your knowledge on how many pokemon you know by taking a quiz.
-            </p>
+        <div class="header-margin">
+            <h1 class="primary-heading">Pokemon api</h1>
         </div>
 
-        <!-- Pokemon Input & Buttons -->
-        <div class="text-center">
-            <input type="text" placeholder="Search for a Pokemon..." class="input" id="pokemon-search">
-
-            <div class="text-center">
-                <button class="btn btn--blue" id="random-pokemon">Random Pokemon</button>
-                <a href="quiz.html" class="btn btn--blue" target="_blank">Take Quiz</a>  
-            </div>
-        </div>
-
-        <!-- Pokemon Card -->
         <div class="row">
-            <div class="col-1-of-3 text-center">
-                <!-- Front -->
-                <div class="poke-box" id="poke-box">
-                    <div class="poke-box__side poke-box__side--front">
+            <div class="col-2-of-4">
+                <div class="text-box">            
+                    <p class="sub-text">
+                        Search any Pokemon by it's name or Dex. Entry and press enter below. You'll get a card, hover over it with your 
+                        mouse and you'll get the Pokemon's Name, Type, Dex. Entry, both it's regular and shiny sprite and a description 
+                        of it.
+                    </p>
 
+                    <p class="sub-text">
+                        You can also test your knowledge on pokemon by clicking on the "Take Quiz" button below.
+                    </p>
+                </div>
+                <!-- Pokemon Input & Buttons -->
+                <div>
+                    <input type="text" placeholder="Search for a Pokemon..." class="input" id="pokemon-search">
+        
+                    <div class="text-left">
+                        <button class="btn btn--blue" id="random-pokemon">Random Pokemon</button>
+                        <a href="quiz.html" class="btn btn--blue" target="_blank">Take Quiz</a>  
                     </div>
+                </div>
+            </div>
 
+            <!-- Pokemon Card -->
+            <div class="col-1-of-3">
+                <!-- Front -->
+                <div class="poke-card" id="poke-card">
+                    <div class="poke-card__side poke-card__side--front">
+    
+                    </div>
                     <!-- Back -->
-                    <div class="poke-box__side poke-box__side--back">
-                        <div class="poke-box__cta">
-                            <div class="text-center" id="poke-box__info">
-
+                    <div class="poke-card__side poke-card__side--back">
+                        <div class="poke-card__cta">
+                            <div class="text-center" id="poke-card__info">
+    
                             </div>
                         </div>
                     </div>

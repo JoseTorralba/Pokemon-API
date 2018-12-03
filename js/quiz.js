@@ -1,14 +1,14 @@
 // Array of Correct Responses
 var correctMessages = [
     'YASSS QUEEN',
-    'SLAYYYYYYYY',
+    'good job',
     'nicee'
 ];
 // Array of Wrong Responses
 var wrongMessages = [
     "you're trash",
     'go watch the show or something',
-    'google it my guy'
+    'google it'
 ];
 
 $(document).ready(function() {

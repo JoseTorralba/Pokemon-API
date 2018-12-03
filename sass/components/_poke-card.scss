@@ -1,8 +1,7 @@
-.poke-box {
+.poke-card {
     perspective: 150rem;
     position: relative;
     height: 42rem;
-    margin-top: 3rem;
 
     @include respond(tablet-portrait) {
         margin-top: 6rem;
