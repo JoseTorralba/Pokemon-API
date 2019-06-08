@@ -134,7 +134,8 @@ body {
     font-size: 1.6rem;
     font-weight: 900;
     display: inline-block;
-    text-transform: capitalize; }
+    text-transform: capitalize;
+    text-shadow: 0px 5px 10px #000; }
     .pokemon-box__type:not(:last-child) {
       margin-right: 1.5rem; }
   .pokemon-box__info {
