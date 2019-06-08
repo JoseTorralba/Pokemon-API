@@ -12,6 +12,7 @@
 
     @include respond(tablet-portrait) {
         background-attachment: scroll;
+    
     }
 
     &__text-box {
