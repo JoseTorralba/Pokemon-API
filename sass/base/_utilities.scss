@@ -2,7 +2,8 @@
 
 .text-left { text-align: left; }
 
-.header-margin {
-    margin-top: 3rem;
-    margin-bottom: 8rem;
+.rotate-pokeball {
+    animation-name: rotate-pokeball;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
 }

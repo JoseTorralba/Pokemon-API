@@ -1,0 +1,33 @@
+.pokemon-box{
+    text-align: center;
+
+    &__name {
+        font-size: 4rem;
+        text-transform: capitalize;
+    }
+
+    &__type {
+        color: #fff;
+        border-radius: 10rem;
+        padding: 1rem 3rem;
+        font-size: 1.6rem;
+        font-weight: 900;
+        display: inline-block;
+        text-transform: capitalize;
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__info {
+        background-color: rgba(255, 255, 255, .8);
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
+        border-radius: 3px;
+        padding: 2rem;
+        margin-top: 3rem;
+        text-align: left;
+        color: #000;
+        font-size: 1.7rem;
+    }
+}

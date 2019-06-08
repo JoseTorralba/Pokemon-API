@@ -1,148 +1,321 @@
-$(function () {
-    // Gets Input & Button Back by ID
-    var pokemonSearchBar = document.getElementById('pokemon-search');
-    var pokemonRandomButton = document.getElementById('random-pokemon');
-    var pokeCard = document.getElementById('poke-card');
-    pokeCard.style.opacity = "0";
-    pokeCard.style.transition = "all .3s";
+// Gets Input, Button & Scroll Button Back by ID
+var pokemonSearchBar = document.getElementById('pokemon-search');
+var pokemonRandomButton = document.getElementById('random-pokemon');
+var scrollButton = document.getElementById('scroll-btn');
 
-    // Pokemon Search Bar
-    $(pokemonSearchBar).on("keypress", function (event) {
+// Gets Pokemon Sprite Container and Section by ID
+var pokeImgBox = document.getElementById('pokemon-sprite');
+var pokeContainer = document.getElementById('poke-box');
 
-        if (event.which == 13) {
+// Gets Pokeball and Pokeball Section by ID
+var pokeSection = document.getElementById('pokeball-section');
+var pokeBallImg = document.getElementById('pokeball-img');
 
-            var value = this.value;
-            var pokemonDescription = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon-species/"
-                + value;
+// Gets Pokemon in Input
+pokemonSearchBar.addEventListener('keypress', function(event) {
+    if (event.keyCode === 13 || event.which === 13) {
 
-            var pokemonByName = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon/"
-                + value;
-            
-            $.getJSON(pokemonByName, function (details) {
-                console.log(details);
+        var value = this.value;
+        pokeballAnimation(); 
+        getRandomPokemon(value);
+        getRandomPokemonDescription(value);
+        hiddenButtonPress();
+        pokeContainer.innerHTML = "";
+    }
+})
 
-                // Displays Pokemon Card
-                // pokeCard.style.display = "block";
-                pokeCard.style.opacity = "1";
+pokemonRandomButton.addEventListener('click', function(event) {
 
-                // Gets element by id
-                var pokemonInfoDiv = $('#poke-card__info');
+    var randomPokemon = Math.round(Math.random() * 800);
+    pokeballAnimation();
+    getRandomPokemon(randomPokemon);
+    getRandomPokemonDescription(randomPokemon);
+    pokeContainer.innerHTML = "";
+})
 
-                // Hides previous results
-                document.getElementById('poke-card__info').innerHTML = "";
 
-                // Shows Pokemon Name
-                const pokeName = document.createElement('h3');
-                pokeName.textContent = details.species.name;
-                pokeName.classList = "poke-card__heading";
-                pokemonInfoDiv.append(pokeName);
+function getRandomPokemonDescription(getPokemon) {
 
-                // Shows Pokemon's Type
-                const pokeType = document.createElement('p');
-                pokeType.textContent = 'Pokemon Type: ' + details.types[0].type.name
-                //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
-                pokeType.classList = "poke-card__text";
-                pokemonInfoDiv.append(pokeType);
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${getPokemon}`)
+    .then(function (response) {
 
-                // Shows Pokemon Dex. Entry
-                const pokeEntry = document.createElement('p');
-                pokeEntry.textContent = 'Pokemon Dex. Entry No.' + details.game_indices[0].game_index;
-                pokeEntry.classList = "poke-card__text";
-                pokemonInfoDiv.append(pokeEntry);
+        response.json()
+        .then(function (pokemon) {
 
-                // Shows Original Pokemon
-                const pokeImg = document.createElement('img');
-                pokeImg.src = details.sprites.front_default;
-                pokeImg.classList = "poke-card__img";
+            var pokeInfoDiv = document.createElement('div');
+            setTimeout(function () {
 
-                // Shows Shiny Pokemon
-                const shinyPokeImg = document.createElement('img');
-                shinyPokeImg.src = details.sprites.front_shiny;
-                shinyPokeImg.classList = "poke-card__img";
+                pokeInfoDiv.innerHTML = `
+                <div class="row">
+                    <div class="pokemon-box__info">
+                        <p>
+                            ${pokemon.flavor_text_entries[1].flavor_text}
+                        </p>
+                    </div>
+                </div>
+                `;
+                pokeContainer.appendChild(pokeInfoDiv)
+            }, 600)
+        })
+    })
+}
 
-                pokemonInfoDiv.append(pokeImg);
-                pokemonInfoDiv.append(shinyPokeImg);
 
-                $.getJSON(pokemonDescription, function (descriptions) {
-                    console.log(descriptions);
+function getRandomPokemon(getPokemon) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${getPokemon}`)
 
-                    // Shows Pokemon Description
-                    const pokeDesc = document.createElement('p');
-                    pokeDesc.textContent = descriptions.flavor_text_entries[1].flavor_text;
-                    pokeDesc.classList = "poke-card__desc";
-                    pokemonInfoDiv.append(pokeDesc);
-                });
-            });
-        };
-    });
+    .then(function (response) {
+        response.json()
 
-    // Random Pokemon Button
-    $(pokemonRandomButton).click(function (event) {
+        .then(function (pokemon) {
+            console.log(pokemon)
+            // Refreshes Results
+            pokeImgBox.innerHTML = "";
 
-            var randomPokemon = Math.round(Math.random() * 100);
-            var pokemonDescription = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon-species/"
-                + randomPokemon;
+            // Gets Pokemon Data
+            var getPokemonName = pokemon.name;
+            var getPokemonSprite = pokemon.sprites.front_default;
+            var getDexEntry = 'Dex. Entry: ' + pokemon.id;
+            var getPokemonWeigth = 'Weight: ' + pokemon.weight + ' lbs.';
+            var getPokemonHeight = 'Height: ' + pokemon.height + 'm';
 
-            var pokemonByName = "https://api.codetabs.com/v1/proxy?quest=https://pokeapi.co/api/v2/pokemon/"
-                + randomPokemon;
+            // Pokemon Sprite
+            var pokeSprite = document.createElement('img')
+            pokeSprite.src = getPokemonSprite;
+            pokeSprite.classList = "pokemon-section__sprite"
+            pokeImgBox.append(pokeSprite);
 
-            $.getJSON(pokemonByName, function (details) {
-                console.log(details);
+            // Pokemon Name
+            const pokeName = document.createElement('h2')
+            pokeName.textContent = getPokemonName;
+            pokeName.classList = 'pokemon-box__name';
+            pokeContainer.append(pokeName)
 
-                // Displays Pokemon Card
-                // pokeCard.style.display = "block";
-                pokeCard.style.opacity = "1";
-                
-                // Gets element by id
-                var pokemonInfoDiv = $('#poke-card__info');
+            // Pokemon Type 1
+            var pokeType1 = pokemon.types[0].type.name;
+            var pokeTypeColor1 = document.createElement('p');
+            pokeTypeColor1.textContent = pokemon.types[0].type.name;
+            pokeTypeColor1.classList = 'pokemon-box__type';
+            pokeContainer.append(pokeTypeColor1)
 
-                // Hides previous results
-                document.getElementById('poke-card__info').innerHTML = "";
-                // document.getElementById('poke-card__info').style.backgroundColor = "rgba(0, 0, 0, 0.53)";
+            // If Pokemon has more that 1 Type
+            if (pokemon.types.length == 2) {
+                var pokeType2 = pokemon.types[1].type.name;
+                var pokeTypeColor2 = document.createElement('p');
+                pokeTypeColor2.textContent = pokemon.types[1].type.name;;
+                pokeTypeColor2.classList = 'pokemon-box__type';
+                pokeContainer.append(pokeTypeColor2)
+    
+            } else {
+                var pokeType2 = null;
+            }
 
-                // Shows Pokemon Name
-                const pokeName = document.createElement('h3');
-                pokeName.textContent = details.species.name;
-                pokeName.classList = "poke-card__heading";
-                pokemonInfoDiv.append(pokeName);
+            getPokemonTypeColor(pokeType1, pokeTypeColor1, pokeType2, pokeTypeColor2);
+            getPokemonStats(getDexEntry, getPokemonWeigth, getPokemonHeight);
+        })
+    })
+}
 
-                // Shows Pokemon's Type
-                const pokeType = document.createElement('p');
-                pokeType.textContent = 'Pokemon Type: ' + details.types[0].type.name
-                //pokemonInfoDiv.append('<p>' + details.types[1].type.name + '</p>');
-                pokeType.classList = "poke-card__text";
-                pokemonInfoDiv.append(pokeType);
 
-                // Shows Pokemon Dex. Entry
-                const pokeEntry = document.createElement('p');
-                pokeEntry.textContent = 'Pokemon Dex. Entry No.' + details.game_indices[0].game_index;
-                pokeEntry.classList = "poke-card__text";
-                pokemonInfoDiv.append(pokeEntry);
+function getPokemonStats(getDexEntry, getPokemonWeigth, getPokemonHeight) {
+    // Displays Pokemon Dex Entry, Weigth & Height
+    var pokeInfoDiv = document.createElement('div');
+    pokeInfoDiv.innerHTML = `
+    <div class="row">
+        <div class="col-1-of-4">
+            <div class="pokemon-box__info">
+                <p>
+                    ${getDexEntry}
+                </p>
+            </div>
+        </div>
+        <div class="col-1-of-4">
+            <div class="pokemon-box__info">
+                <p>
+                    ${getPokemonWeigth}
+                </p>
+            </div>
+        </div>
+        <div class="col-1-of-4">
+            <div class="pokemon-box__info">
+                <p>
+                    ${getPokemonHeight}
+                </p>
+            </div>
+        </div>
+    </div>
+    `;
+    pokeContainer.appendChild(pokeInfoDiv)
+}
 
-                // Shows Original Pokemon
-                const pokeImg = document.createElement('img');
-                pokeImg.src = details.sprites.front_default;
-                pokeImg.classList = "poke-card__img";
 
-                // Shows Shiny Pokemon
-                const shinyPokeImg = document.createElement('img');
-                shinyPokeImg.src = details.sprites.front_shiny;
-                shinyPokeImg.classList = "poke-card__img";
+function getPokemonTypeColor(pokeType1, pokeTypeColor1, pokeType2, pokeTypeColor2) {
+    // Type 1 Colors
+    if (pokeType1 == 'normal') {
+        pokeTypeColor1.style.backgroundColor = '#a8a878';
 
-                // Appends Pokemon Sprite & Shiny Sprite
-                pokemonInfoDiv.append(pokeImg);
-                pokemonInfoDiv.append(shinyPokeImg);
+    } else if (pokeType1 == 'fire') {
+        pokeTypeColor1.style.backgroundColor = '#f08030';
 
-            $.getJSON(pokemonDescription, function (descriptions) {
-                console.log(descriptions);
+    } else if (pokeType1 == 'water') {
+        pokeTypeColor1.style.backgroundColor = '#6890f0';
 
-                // Shows Pokemon Description
-                const pokeDesc = document.createElement('p');
-                pokeDesc.textContent = descriptions.flavor_text_entries[1].flavor_text;
-                pokeDesc.classList = "poke-card__desc";
-                pokemonInfoDiv.append(pokeDesc);
-            });
-        });
-    });
+    } else if (pokeType1 == 'grass') {
+        pokeTypeColor1.style.backgroundColor = '#78c850';
+
+    } else if (pokeType1 == 'electric') {
+        pokeTypeColor1.style.backgroundColor = '#f8d030';
+
+    } else if (pokeType1 == 'ice') {
+        pokeTypeColor1.style.backgroundColor = '#98d8d7';
+
+    } else if (pokeType1 == 'ground') {
+        pokeTypeColor1.style.backgroundColor = '#e0c068';
+
+    } else if (pokeType1 == 'flying') {
+        pokeTypeColor1.style.backgroundColor = '#a88ff0';
+
+    } else if (pokeType1 == 'poison') {
+        pokeTypeColor1.style.backgroundColor = '#a040a0';
+
+    } else if (pokeType1 == 'fighting') {
+        pokeTypeColor1.style.backgroundColor = '#c02f28';
+
+    } else if (pokeType1 == 'psychic') {
+        pokeTypeColor1.style.backgroundColor = '#f85888';
+
+    } else if (pokeType1 == 'dark') {
+        pokeTypeColor1.style.backgroundColor = '#705848';
+
+    } else if (pokeType1 == 'rock') {
+        pokeTypeColor1.style.backgroundColor = '#b8a038';
+
+    } else if (pokeType1 == 'bug') {
+        pokeTypeColor1.style.backgroundColor = '#b8a038';
+    
+    } else if (pokeType1 == 'ghost') {
+        pokeTypeColor1.style.backgroundColor = '#b8a038';
+
+    } else if (pokeType1 == 'steel') {
+        pokeTypeColor1.style.backgroundColor = '#b8b8d0';
+
+    } else if (pokeType1 == 'dragon') {
+        pokeTypeColor1.style.backgroundColor = '#7038f8';
+    
+    } else if (pokeType1 == 'fairy') {
+        pokeTypeColor1.style.backgroundColor = '#ffaec9';
+    } 
+
+    // Type 2 Colors
+    if (pokeType2 == 'normal') {
+        pokeTypeColor2.style.backgroundColor = '#a8a878';
+
+    } else if (pokeType2 == 'fire') {
+        pokeTypeColor2.style.backgroundColor = '#f08030';
+
+    } else if (pokeType2 == 'water') {
+        pokeTypeColor2.style.backgroundColor = '#6890f0';
+
+    } else if (pokeType2 == 'grass') {
+        pokeTypeColor2.style.backgroundColor = '#78c850';
+
+    } else if (pokeType2 == 'electric') {
+        pokeTypeColor2.style.backgroundColor = '#f8d030';
+
+    } else if (pokeType2 == 'ice') {
+        pokeTypeColor2.style.backgroundColor = '#98d8d7';
+
+    } else if (pokeType2 == 'ground') {
+        pokeTypeColor2.style.backgroundColor = '#e0c068';
+    
+    } else if (pokeType2 == 'flying') {
+        pokeTypeColor2.style.backgroundColor = '#a88ff0';
+
+    } else if (pokeType2 == 'poison') {
+        pokeTypeColor2.style.backgroundColor = '#a040a0';
+
+    } else if (pokeType2 == 'fighting') {
+        pokeTypeColor2.style.backgroundColor = '#c02f28';
+
+    } else if (pokeType2 == 'psychic') {
+        pokeTypeColor2.style.backgroundColor = '#f85888';
+
+    } else if (pokeType2 == 'dark') {
+        pokeTypeColor2.style.backgroundColor = '#705848';
+
+    } else if (pokeType2 == 'rock') {
+        pokeTypeColor2.style.backgroundColor = '#b8a038';
+
+    } else if (pokeType2 == 'bug') {
+        pokeTypeColor2.style.backgroundColor = '#b8a038';
+    
+    } else if (pokeType2 == 'ghost') {
+        pokeTypeColor2.style.backgroundColor = '#b8a038';
+
+    } else if (pokeType2 == 'steel') {
+        pokeTypeColor2.style.backgroundColor = '#b8b8d0';
+
+    } else if (pokeType2 == 'dragon') {
+        pokeTypeColor2.style.backgroundColor = '#7038f8';
+    
+    } else if (pokeType2 == 'fairy') {
+        pokeTypeColor2.style.backgroundColor = '#ffaec9';
+    } 
+}
+
+// Scroll animation
+$("a.scroll").click(function (event) {
+    event.preventDefault();
+
+    $("html, body").animate({
+        scrollTop: $($(this).attr("href")).offset().top
+    }, 1000);
 });
 
+// PokeBall Animation
+function pokeballAnimation() {
+    pokeBallImg.classList.add('rotate-pokeball');
+    pokeBallImg.style.width = '300px';
+    pokeBallImg.style.height = '300px';
+    pokeSection.style.marginTop = '-15rem'
+
+    setTimeout(function () {
+        pokeBallImg.classList.remove('rotate-pokeball');
+    }, 1000)
+}
+
+function removePokeData() {
+    pokeBallImg.style.width = '200px';
+    pokeBallImg.style.height = '200px';
+    pokeSection.style.marginTop = '-35rem'
+
+    pokeBallImg.classList.add('rotate-pokeball');
+    setTimeout(function () {
+        pokeBallImg.classList.remove('rotate-pokeball');
+    }, 1000)
+
+    pokeImgBox.innerHTML = "";
+    pokeContainer.innerHTML = "";
+}
+
+// Scroll Button
+scrollButton.style.opacity = '0';
+scrollButton.addEventListener('click', function() {
+    removePokeData();
+});
+
+function hiddenButtonPress() {
+    var hiddenButtonScroll =  document.getElementById('scroll-input')
+    hiddenButtonScroll.click();
+}
+
+
+// Window Scroll Event Listener For Scroll Button
+window.addEventListener('scroll', function() {
+    
+    if (window.pageYOffset > 400) {
+        scrollButton.style.opacity = '1';
+    } else {
+        scrollButton.style.opacity = '0';
+    }
+});

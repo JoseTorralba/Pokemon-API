@@ -1,30 +1,31 @@
-.input {
-    font-size: 1.5rem;
-    width: 100%;
-    padding: 1.5rem 1rem;
-    margin-bottom: 2.5rem;
-    border: none;
-    border-bottom: 3px solid transparent;
-    border-radius: 2px;
-    transition: all .3s;
+.input-box {
+    text-align: center;
+    margin-top: 3rem;
+    &__input {
+        font-size: 1.5rem;
+        width: 500px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        // margin-bottom: 2.5rem;
+        border: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 2px;
+        transition: all .3s;
+    
+        @include respond(phone) {
+            width: 75%;
+        }   
 
-    @include respond(tablet-portrait) {
-        margin-top: 4rem;
-    }
-
-    @include respond(smaller-phone) {
-        width: 95%;
-    }   
-
-    &:focus {
-        outline: none;
-        color: $color-yellow;
-        background-color: $color-blue;
-        box-shadow: 0 1rem 2rem rgba($color-black, .1);
-        border-bottom: 3px solid $color-yellow;
-    }
-
-    &:focus::placeholder {
-        color: $color-yellow;
+        &:focus {
+            outline: none;
+            color: $color-yellow;
+            background-color: $color-blue;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-yellow;
+        }
+    
+        &:focus::placeholder {
+            color: $color-yellow;
+        }
     }
 }

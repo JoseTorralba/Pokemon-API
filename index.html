@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,55 +13,56 @@
     <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
-    <section>
-        <div class="header-margin">
-            <h1 class="primary-heading">Pokemon api</h1>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__text-box">
+            <h1 class="primary-heading">
+                Pokemon API
+            </h1>
+            <p class="sub-text">
+                Search any Pokemon by it's name or number and press enter below. You'll get that Pokemon's information.
+            </p>
+            <p class="sub-text">
+                You can also get a Pokemon by random!
+            </p>
+
+            <!-- Hidden Button, Triggered by Javascript -->
+            <a href="#poke-box-section" class="btn--hidden scroll" id="scroll-input">Testing</a>
+
+            <div class="input-box">
+                <input type="text" placeholder="Search for a Pokemon..." class="input-box__input" id="pokemon-search">
+            </div>
+
+            <div class="btn-box">
+                <a class="btn btn--blue scroll" href="#poke-box-section" id="random-pokemon">Random Pokemon</a>
+                <!-- <a href="quiz.html" class="btn btn--blue" target="_blank">Take Quiz</a>   -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Pokeball IMG & Pokemon Sprite-->
+    <section class="pokemon-section" id="pokeball-section">
+        <div class="pokemon-section__img" id="poke-img-box">
+            <!-- Pokeball Image -->
+            <div class="pokemon-section__poke-ball" id="pokeball-img"></div>
+            <!-- Pokemon Sprite -->
+            <div id="pokemon-sprite"></div>
         </div>
 
-        <div class="row">
-            <div class="col-2-of-4">
-                <div class="text-box">            
-                    <p class="sub-text">
-                        Search any Pokemon by it's name or Dex. Entry and press enter below. You'll get a card, hover over it with your 
-                        mouse and you'll get the Pokemon's Name, Type, Dex. Entry, both it's regular and shiny sprite and a description 
-                        of it.
-                    </p>
+        <!-- Scroll Button -->
+        <div class="scroll-box" id="scroll-btn">
+            <a href="#header" class="scroll-box__link scroll" id="scroll-btn">&#8679;</a>
+        </div>
+    </section>
 
-                    <p class="sub-text">
-                        You can also test your knowledge on pokemon by clicking on the "Take Quiz" button below.
-                    </p>
-                </div>
-                <!-- Pokemon Input & Buttons -->
-                <div>
-                    <input type="text" placeholder="Search for a Pokemon..." class="input" id="pokemon-search">
-        
-                    <div class="text-left">
-                        <button class="btn btn--blue" id="random-pokemon">Random Pokemon</button>
-                        <a href="quiz.html" class="btn btn--blue" target="_blank">Take Quiz</a>  
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pokemon Card -->
-            <div class="col-1-of-3">
-                <!-- Front -->
-                <div class="poke-card" id="poke-card">
-                    <div class="poke-card__side poke-card__side--front">
-    
-                    </div>
-                    <!-- Back -->
-                    <div class="poke-card__side poke-card__side--back">
-                        <div class="poke-card__cta">
-                            <div class="text-center" id="poke-card__info">
-    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Pokemon info -->
+    <section class="pokemon-box-section" id="poke-box-section">
+        <div class="pokemon-box" id="poke-box">            
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
+
+

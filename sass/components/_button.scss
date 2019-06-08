@@ -2,7 +2,6 @@
     &:not(:last-child) {
         margin-right: 1.5rem;
     }
-
     &,
     &:link,
     &:visited {
@@ -13,7 +12,7 @@
         padding: 1rem 1.2rem;
         font-size: 1.6rem;
         font-weight: inherit;
-        border-radius: 5rem;
+        border-radius: 2px;
         // for button
         border: none;
         outline: none;
@@ -27,6 +26,19 @@
             background-color: $color-blue;
             color: $color-yellow;
         }
+    }
+
+    &-box {
+        width: 520px;
+        margin: 4rem auto;
+    
+        @include respond(phone) {
+            width: 100%;
+        }   
+    }
+
+    &--hidden {
+        display: none;
     }
 }
 
