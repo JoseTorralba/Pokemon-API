@@ -1,0 +1,30 @@
+.pokemon-search {
+   align-items: center;
+   display: flex;
+   font-size: 1.5rem;
+   justify-content: center;
+   gap: 12px;
+   margin: 0 auto;
+   padding-top: 20px;
+}
+
+.pokemon-search__input {
+   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.26);  
+   border-radius: .1rem;
+   padding: .5rem;
+   outline: none;
+   border: 1px solid #e0e0e0;
+   border-bottom: 3px solid #e0e0e0;
+   transition: all .3s;
+}
+
+.pokemon-search__input:focus {
+   border-bottom: 3px solid #1565C0;   
+}
+
+@media only screen and (max-width: 25.875em) {
+   .pokemon-search {
+      flex-direction: column;
+      width: 75%;
+   }
+}
