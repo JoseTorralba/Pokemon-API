@@ -4,14 +4,17 @@ import axios from 'axios';
 
 const PokemonData = ({ pokemonData }) => {
    const [pokemon] = pokemonData;
-   const [description, setDescription] = useState('');
+   const [pokemonDescription, setPokemonDescription] = useState();
    const [checkbox, setCheckbox] = useState(false);
+
+
+
 
    useEffect(() => {
       axios.get(pokemon.speciesURL)
       .then(response => {
          const pokemonDescription = response.data.flavor_text_entries.filter(entry => entry.language.name === 'en');
-         setDescription(pokemonDescription[0].flavor_text);
+         setPokemonDescription(pokemonDescription[0].flavor_text);
       })
 
    });
@@ -52,7 +55,9 @@ const PokemonData = ({ pokemonData }) => {
                </div>
             </div>
             <div className="pokemon-card__description">
-               <p>{description}</p>
+               <p>
+                  {pokemonDescription ? pokemonDescription : 'no pokemon'}
+               </p>
             </div>
          </div>
       </>
