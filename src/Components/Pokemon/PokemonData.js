@@ -1,21 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './PokemonData.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 const PokemonData = ({ pokemonData }) => {
    const [pokemon] = pokemonData;
-   // const [pokemonDescription, setPokemonDescription] = useState();
+   const [pokemonDescription, setPokemonDescription] = useState();
    const [checkbox, setCheckbox] = useState(false);
 
 
-   // useEffect(() => {
-   //    axios.get(pokemon.speciesURL)
-   //    .then(response => {
-   //       const pokemonDescription = response.data.flavor_text_entries.filter(entry => entry.language.name === 'en');
-   //       setPokemonDescription(pokemonDescription[0].flavor_text);
-   //    })
+   useEffect(() => {
+      axios.get(pokemon.speciesURL)
+      .then(response => {
+         const pokemonDescription = response.data.flavor_text_entries.filter(entry => entry.language.name === 'en');
+         setPokemonDescription(pokemonDescription[0].flavor_text);
+      })
 
-   // });
+   });
 
    const shinyToggleHandler = event => setCheckbox(event.target.checked);
 
@@ -52,11 +52,9 @@ const PokemonData = ({ pokemonData }) => {
                   </p>
                </div>
             </div>
-            {/* <div className="pokemon-card__description">
-               <p>
-                  {pokemonDescription ? pokemonDescription : 'no pokemon'}
-               </p>
-            </div> */}
+            <div className="pokemon-card__description">
+               <p>{pokemonDescription}</p>
+            </div>
          </div>
       </>
    )
