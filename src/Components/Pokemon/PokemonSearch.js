@@ -56,9 +56,9 @@ const PokemonSearch = props => {
          <form className="pokemon-search" onSubmit={searchPokemonHandler}>
             <label htmlFor="pokemon">Enter a Pokemon:</label>
             <input
-               type="search"
                className="pokemon-search__input" 
-               id="pokemon" type="text" 
+               id="pokemon" 
+               type="search" 
                value={enteredPokemon} 
                onChange={pokemonChangeHandler} 
                placeholder="Pokemon name..."
@@ -69,5 +69,4 @@ const PokemonSearch = props => {
       </>
    )
 }
-
 export default PokemonSearch;
