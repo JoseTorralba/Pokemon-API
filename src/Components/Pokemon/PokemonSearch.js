@@ -5,6 +5,7 @@ import './PokemonSearch.css';
 import ErrorModal from "../UI/ErrorModal";
 import Loading from "../UI/Loading";
 
+
 const PokemonSearch = props => {
    const [enteredPokemon, setEnteredPokemon] = useState('');
    const [error, setError] = useState();
@@ -63,6 +64,7 @@ const PokemonSearch = props => {
                onChange={pokemonChangeHandler} 
                placeholder="Pokemon name..."
                disabled = {isLoading}
+               readOnly = {isLoading}
             />
             <Button type="submit">Search</Button>
          </form>
