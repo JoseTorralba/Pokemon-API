@@ -2,11 +2,11 @@
    padding: 1rem;
    border-radius: 12px;
    text-align: center;
-   display: grid;
+   display: grid !important;
    grid-template-columns: repeat(6, 1fr);
    height: 350px;
    margin-top: 10px;
- }
+}
 
 .stats-header {
    font-size: 2rem;
