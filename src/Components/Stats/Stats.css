@@ -2,13 +2,13 @@
    padding: 1rem;
    border-radius: 12px;
    text-align: center;
-   display: grid !important;
-   grid-template-columns: repeat(6, 1fr);
+   display: flex;
+   justify-content: space-evenly;
    height: 350px;
    margin-top: 10px;
-}
+ }
 
-.secondary-header {
+.stats-header {
    font-size: 2rem;
    margin-top: 4rem;
    margin-bottom: 2rem;

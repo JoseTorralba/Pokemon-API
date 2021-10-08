@@ -23,7 +23,7 @@ const Stats = ({ pokemonStats }) => {
 
    return (
       <div>
-         <h2 className="secondary-header">Base Stats</h2>
+         <h2 className="stats-header">Base Stats</h2>
          <div className="stats">
             {pokeStats.stats.map((currentStat, i) => {
                return <StatsBar 
