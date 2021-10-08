@@ -55,7 +55,8 @@ const PokemonSearch = props => {
 
          <form className="pokemon-search" onSubmit={searchPokemonHandler}>
             <label htmlFor="pokemon">Enter a Pokemon:</label>
-            <input 
+            <input
+               type="search"
                className="pokemon-search__input" 
                id="pokemon" type="text" 
                value={enteredPokemon} 
