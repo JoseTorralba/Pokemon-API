@@ -47,7 +47,7 @@ const App = () => {
             </section>
             : 
             <div className="info">
-               <p>Search for a pokemon by it's name or dex entry above and you'll get information on the pokemon!</p>
+               <p>Search for a pokemon by it's name or national pokedex number above and you'll get information on the pokemon!</p>
             </div>
          }
       </div>

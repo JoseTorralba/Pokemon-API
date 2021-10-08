@@ -54,13 +54,14 @@ const PokemonSearch = props => {
          {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
 
          <form className="pokemon-search" onSubmit={searchPokemonHandler}>
-            <label htmlFor="pokemon">Search For a Pokemon:</label>
+            <label htmlFor="pokemon">Enter a Pokemon:</label>
             <input 
                className="pokemon-search__input" 
                id="pokemon" type="text" 
                value={enteredPokemon} 
                onChange={pokemonChangeHandler} 
-               placeholder="Enter a Pokemon..." 
+               placeholder="Pokemon name..."
+               disabled = {isLoading}
             />
             <Button type="submit">Search</Button>
          </form>

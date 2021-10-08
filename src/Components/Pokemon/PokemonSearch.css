@@ -1,11 +1,12 @@
 .pokemon-search {
    align-items: center;
    display: flex;
+   flex-wrap: wrap;
    font-size: 1.5rem;
    justify-content: center;
    gap: 12px;
    margin: 0 auto;
-   padding-top: 20px;
+   padding-top: 1.4rem;
 }
 
 .pokemon-search__input {
@@ -22,9 +23,17 @@
    border-bottom: 3px solid #1565C0;   
 }
 
-@media only screen and (max-width: 25.875em) {
+@media only screen and (max-width: 37.5em) {
    .pokemon-search {
-      flex-direction: column;
-      width: 75%;
+      flex-wrap: wrap;
+      flex: 0 0 100% !important;
+      width: 100%;
+   }
+}
+
+
+@media only screen and (max-width: 25.875em) {
+   .pokemon-search label {
+      display: none;
    }
 }

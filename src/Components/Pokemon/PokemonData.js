@@ -46,7 +46,7 @@ const PokemonData = ({ pokemonData }) => {
                   </p>
                   <p className="pokemon-card__shiny">
                      <span className="pokemon-card__dex--data">
-                        <input className="pokemon-card__toggle" type="checkbox" onClick={shinyToggleHandler}/>
+                        <input className="pokemon-card__toggle" type="checkbox" onClick={shinyToggleHandler} />
                      </span>
                      <span className="pokemon-card__dex--text">Shiny</span>
                   </p>
