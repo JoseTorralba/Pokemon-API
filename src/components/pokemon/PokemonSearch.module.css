@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 3rem;
+}
+
+.form {
+  /* background-color: rgb(223, 99, 99); */
+  /* margin: 0 auto;
+
+  width: 80rem; */
+}
+
+.formTitle {
+  font-size: 4rem;
+  /* font-weight: 500; */
+  margin-bottom: 0.6rem;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+.text:not(:last-child) {
+  margin-bottom: 0.6rem;
+}
+
+.input {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border: 2px solid gray;
+
+  margin-top: 1.5rem;
+
+  padding: 1.8rem 1rem;
+  padding-right: 22rem;
+
+  width: 100%;
+  /* background-color: #808080; */
+}
+
+.input:focus {
+  outline: none;
+}
+
+.button {
+  /* border: none; */
+  background-color: #0082c8;
+  border: 2px solid #0082c8;
+  border-left: none;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  color: #fff;
+  /* font-size: 1.7rem; */
+  font-weight: 900;
+  margin-top: 1.5rem;
+  padding: 1.8rem 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: none;
+  width: 20rem;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.sprite {
+  /* background-color: rgb(58, 18, 255); */
+
+  text-align: center;
+  justify-self: center;
+}
+
+.test {
+  text-align: center;
+  width: 100%;
+}
+
+img {
+  width: 30%;
+}
