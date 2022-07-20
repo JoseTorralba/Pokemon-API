@@ -6,6 +6,7 @@ export const PokemonProvider = ({ children }) => {
   // For Reducer
   const initialState = {
     pokemons: [],
+    entries: {},
     pokemon: {},
     info: {},
     loading: false,

@@ -3,16 +3,20 @@
 }
 
 .grid {
+  margin: 0 auto;
+  width: 60rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0 3rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem 0;
+
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 1rem;
+  padding: 3rem 6rem;
 }
 
 .form {
-  /* background-color: rgb(223, 99, 99); */
-  /* margin: 0 auto;
-
-  width: 80rem; */
+  /* margin-bottom: 2rem; */
 }
 
 .formTitle {
@@ -73,16 +77,24 @@
 }
 
 .sprite {
-  /* background-color: rgb(58, 18, 255); */
-
   text-align: center;
   justify-self: center;
 }
 
 .test {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 1rem;
+  /* background-color: #808080; */
   text-align: center;
   width: 100%;
+  padding: 2rem;
+  transition: all 0.3s;
 }
+/* 
+.test:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 1px 1px rgba(0, 0, 0, 0.16);
+} */
 
 img {
   width: 30%;

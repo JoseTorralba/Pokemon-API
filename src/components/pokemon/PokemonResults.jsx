@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PokemonContext from '../../context/pokemon/PokemonContext';
 import PokemonItem from './PokemonItem';
-import classes from './PokemonResults.module.css';
+// import classes from './PokemonResults.module.css';
 
 function PokemonResults() {
   const { pokemon, loading } = useContext(PokemonContext);

@@ -1,13 +1,13 @@
 import { useContext, useRef, useState } from 'react';
 import PokemonResults from './PokemonResults';
 import PokemonContext from '../../context/pokemon/PokemonContext';
-import { searchPokemon } from '../../context/pokemon/PokemonActions';
+import { getPokemon } from '../../context/pokemon/PokemonActions';
 
 import pokeball from '../layout/assets/pokeball.png';
 import classes from './PokemonSearch.module.css';
 
 function PokemonSearch() {
-  const { dispatch } = useContext(PokemonContext);
+  const { loading, dispatch } = useContext(PokemonContext);
   const pokemonNameRef = useRef();
 
   const [searched, setSearched] = useState(false);
@@ -19,10 +19,11 @@ function PokemonSearch() {
     if (enteredPokemon === '') {
       window.alert('enter a pokemon!');
     } else {
-      const pokemon = await searchPokemon(enteredPokemon);
+      dispatch({ type: 'SET_LOADING' });
+      setSearched(true);
+      const pokemon = await getPokemon(enteredPokemon);
 
       dispatch({ type: 'GET_POKEMON', payload: pokemon });
-      setSearched(true);
 
       pokemonNameRef.current.value = '';
     }

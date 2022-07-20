@@ -14,7 +14,7 @@ function Navbar() {
         <div>
           <div className={classes.links}>
             <Link to='/'>Home</Link>
-            <Link to='/pokemon'>Pokemon</Link>
+            <Link to='/pokemons'>Pokemon</Link>
             <Link to='/about'>About</Link>
           </div>
         </div>
