@@ -1,35 +1,24 @@
 import { Link } from 'react-router-dom';
+import PokemonTypes from './PokemonTypes';
 import classes from './PokemonItem.module.css';
 
-function PokemonItem({ pokemon, classTest }) {
-  const { name, id } = pokemon;
+const PokemonItem = ({ pokemon, cname }) => {
+  const { name, id, sprites, types } = pokemon;
 
   return (
-    <div className={`${classes.pokemon} ${classTest}`}>
-      <img
-        className={classes.sprite}
-        src={pokemon.sprites.front_default}
-        alt={pokemon.name}
-      />
-
-      <p className={classes.name}>{pokemon.name}</p>
+    <Link className={`${classes.pokemon} ${cname}`} to={`/pokemons/${name}`}>
+      <div className={classes.pokeID}>
+        <p>#{('000' + id).slice(-3)}</p>
+      </div>
+      <img className={classes.sprite} src={sprites.front_default} alt={name} />
 
       <div className={classes.types}>
-        {pokemon.types.map(curType => (
-          <p
-            className={`${classes[`${curType.type.name}`]} ${classes.type}`}
-            key={curType.slot}
-          >
-            {curType.type.name}
-          </p>
-        ))}
+        <PokemonTypes types={types} />
       </div>
 
-      <Link className={classes.button} to={`/pokemons/${name}`}>
-        View Pokemon
-      </Link>
-    </div>
+      <p className={classes.button}>{name}</p>
+    </Link>
   );
-}
+};
 
 export default PokemonItem;

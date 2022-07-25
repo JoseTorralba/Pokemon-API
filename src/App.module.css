@@ -4,3 +4,7 @@
   flex-direction: column;
   height: 100vh;
 }
+
+main {
+  padding: 6rem 0;
+}

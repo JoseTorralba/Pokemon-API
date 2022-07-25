@@ -1,3 +1,17 @@
-.sprite img {
-  width: 30%;
+.container {
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 20rem;
+}
+
+.pokemon {
+  background-color: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-align: center;
+}
+
+.pokemon img {
+  padding: 1.5rem 2rem;
+  width: 100%;
 }

@@ -1,23 +1,18 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 4rem 2rem;
-  width: 114rem;
+  gap: 5rem 1.5rem;
+  max-width: 114rem;
   margin: 0 auto;
-
-  padding: 6rem 0;
 }
 
 .pokemon {
   background-color: #fff;
   border-radius: 0.6rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23), 0 3px 6px rgba(0, 0, 0, 0.23);
-  /* padding: 1.5rem 0; */
-  font-size: 1.5rem;
-  text-transform: capitalize;
   text-align: center;
-  transition: all 0.2s;
 
+  /* Removes <Link> Margin remove the a tag somewhere in the css to prevent it from spreading */
   margin-right: 0 !important;
 }
 
@@ -30,24 +25,13 @@
   width: 100%;
 }
 
-.pokemon p {
-  background: #0082c8;
-  border-bottom-left-radius: 0.6rem;
-  border-bottom-right-radius: 0.6rem;
-  color: #fff;
-  display: block;
-  max-width: 100%;
-  padding: 0.6rem 0;
-}
-
 /* PAGINATION */
 
 .pagination {
-  margin-bottom: 2.5rem;
   max-width: 114rem;
   text-align: center;
   margin: 0 auto;
-  padding-bottom: 4rem;
+  padding-top: 6rem;
 }
 
 .prev,
@@ -59,7 +43,7 @@
   padding: 1rem 6rem;
   border: none;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
+
   transition: all 0.2s;
 }
 
@@ -67,11 +51,40 @@
 .next:hover {
   background-color: #0082c8;
   color: #fff;
+  cursor: pointer;
 }
 
-.prev.disabled,
-.next.disabled {
+.disabled {
   pointer-events: none;
   box-shadow: none;
   color: #999;
+}
+
+@media only screen and (max-width: 75em) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 4rem;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 25.875em) {
+  .prev,
+  .next {
+    padding: 1rem 4rem;
+    margin: 0 1rem;
+  }
 }

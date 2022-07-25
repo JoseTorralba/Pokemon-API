@@ -1,10 +1,10 @@
 import { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import Loading from '../components/layout/Loading';
 import PokemonContext from '../context/pokemon/PokemonContext';
-
+import PokemonTypes from '../components/pokemon/PokemonTypes';
 import { getPokemon, getPokemonDesc } from '../context/pokemon/PokemonActions';
-import './Pokemon.css';
+import classes from './Pokemon.module.css';
 
 function Pokemon() {
   const { entries, info, loading, dispatch } = useContext(PokemonContext);
@@ -34,104 +34,101 @@ function Pokemon() {
   };
 
   const { name, sprites, types, id, weight, height, stats } = info;
-  console.log(info);
 
   if (loading) {
-    return <p className='load'>Loading...</p>;
+    return <Loading />;
   }
 
   return (
-    <div className='pokemon'>
-      <div className='test'>
-        <Link to='/' className='link'>
+    <>
+      <div className={classes.pokemon}>
+        {searchedPokemon && (
+          <div className={classes.card}>
+            <div className={classes.data}>
+              <h2 className={classes.name}>{name}</h2>
+              <img
+                className={classes.sprite}
+                src={!shiny ? sprites.front_default : sprites.front_shiny}
+                alt={name}
+              />
+
+              <div className={classes.types}>
+                <PokemonTypes types={types} />
+              </div>
+
+              <div className={classes.info}>
+                <p className={classes.dex}>
+                  <span className={classes.label}>
+                    {('000' + id).slice(-3)}
+                  </span>
+                  <span className={classes.test}>Dex. #</span>
+                </p>
+
+                <p className={classes.dex}>
+                  <span className={classes.label}>{weight}kg</span>
+                  <span className={classes.test}>Weight</span>
+                </p>
+
+                <p className={classes.dex}>
+                  <span className={classes.label}>{height}m</span>
+                  <span className={classes.test}>Height</span>
+                </p>
+                <p className={classes.dex}>
+                  <span className={classes.label}>
+                    <input
+                      className={classes.toggle}
+                      type='checkbox'
+                      onClick={shinyHandler}
+                    />
+                  </span>
+                  <span className='test'>Shiny</span>
+                </p>
+              </div>
+              <div className={classes.description}>{entries}</div>
+            </div>
+
+            <div>
+              <h2 className={classes.header}>Base Stats</h2>
+              <div className={classes.stats}>
+                {stats.map((currentStat, i) => {
+                  return (
+                    <div className={classes.bars} key={i}>
+                      <div className={classes.inner}>
+                        <div
+                          className={classes.fill}
+                          style={{
+                            height:
+                              currentStat.base_stat >= 255
+                                ? '100%'
+                                : currentStat.base_stat + 'px',
+                          }}
+                        ></div>
+                      </div>
+
+                      <div className={classes.label}>
+                        <span className={classes.value}>
+                          {currentStat.base_stat}
+                        </span>
+                        <span className={classes.attribute}>{statName[i]}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className={classes.buttons}>
+        <Link to='/' className={classes.button}>
           Search For a Pokemon
         </Link>
 
-        <Link to='/pokemons' className='link'>
+        <Link to='/pokemons' className={classes.button}>
           View All Pokemon
         </Link>
       </div>
-      {searchedPokemon ? (
-        <div className='pokemon-card'>
-          <div className='pokemon-card__info'>
-            <img
-              className='pokemon-card__img'
-              src={!shiny ? sprites.front_default : sprites.front_shiny}
-              alt={name}
-            />
-            <h2 className='pokemon-card__name'>{name}</h2>
-            <div>
-              {types.map(curType => (
-                <p className={`type ${curType.type.name}`} key={curType.slot}>
-                  {curType.type.name}
-                </p>
-              ))}
-            </div>
-
-            <div className='pokemon-card__sub-info'>
-              <p className='pokemon-card__dex'>
-                <span className='pokemon-card__dex--data'>{id}</span>
-                <span className='pokemon-card__dex--text'>Dex. #</span>
-              </p>
-
-              <p className='pokemon-card__weight'>
-                <span className='pokemon-card__dex--data'>{weight}kg</span>
-                <span className='pokemon-card__dex--text'>Weight</span>
-              </p>
-
-              <p className='pokemon-card__height'>
-                <span className='pokemon-card__dex--data'>{height}m</span>
-                <span className='pokemon-card__dex--text'>Height</span>
-              </p>
-              <p className='pokemon-card__shiny'>
-                <span className='pokemon-card__dex--data'>
-                  <input
-                    className='pokemon-card__toggle'
-                    type='checkbox'
-                    onClick={shinyHandler}
-                  />
-                </span>
-                <span className='pokemon-card__dex--text'>Shiny</span>
-              </p>
-            </div>
-            <div className='pokemon-card__description'>{entries}</div>
-          </div>
-          <div>
-            <h2 className='stats-header'>Base Stats</h2>
-            <div className='stats'>
-              {stats.map((currentStat, i) => {
-                return (
-                  <div className='stat-bar' key={i}>
-                    <div className='stat-bar__inner'>
-                      <div
-                        className='stat-bar__fill'
-                        style={{
-                          height:
-                            currentStat.base_stat >= 255
-                              ? '100%'
-                              : currentStat.base_stat + 'px',
-                        }}
-                      ></div>
-                    </div>
-
-                    <div className='stat-bar__label'>
-                      <span className='stat-bar__label--value'>
-                        {currentStat.base_stat}
-                      </span>
-                      <span className='stat-bar__label--attribute'>
-                        {statName[i]}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <p>Loading..</p>
-      )}
-    </div>
+    </>
   );
 }
 
