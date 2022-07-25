@@ -1,26 +1,40 @@
 import { MdCatchingPokemon } from 'react-icons/md';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-
 import classes from './Navbar.module.css';
-function Navbar() {
+
+const Navbar = () => {
+  const navRef = useRef();
+  const toggleNav = () => navRef.current.classList.toggle(classes.responsive);
+
   return (
-    <nav className={classes.nav}>
-      <div className={classes.container}>
-        <div className={classes.title}>
+    <>
+      <nav className={classes.nav}>
+        <div className={classes.logo}>
           <MdCatchingPokemon className={classes.icon} />
-          <Link to='/'>Pokemon API</Link>
+          <Link to='/' className={classes.title}>
+            Pokemon API
+          </Link>
         </div>
 
-        <div>
-          <div className={classes.links}>
-            <Link to='/'>Home</Link>
-            <Link to='/pokemons'>Pokemon</Link>
-            {/* <Link to='/about'>About</Link> */}
-          </div>
+        <FaBars onClick={toggleNav} className={classes.bars} />
+
+        <div ref={navRef} className={classes.list}>
+          <Link to='/' className={classes.item} onClick={toggleNav}>
+            Home
+          </Link>
+
+          <Link to='/pokemons' className={classes.item} onClick={toggleNav}>
+            Pokemon
+          </Link>
+          <button className={classes.close} onClick={toggleNav}>
+            <FaTimes />
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
-}
+};
 
 export default Navbar;

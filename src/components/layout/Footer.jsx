@@ -1,6 +1,6 @@
 import classes from './Footer.module.css';
 
-function Footer() {
+const Footer = () => {
   const getCurrentYear = new Date().getFullYear();
 
   return (
@@ -8,6 +8,6 @@ function Footer() {
       &copy;{getCurrentYear} Designed & Developed by Jose Torralba
     </div>
   );
-}
+};
 
 export default Footer;
