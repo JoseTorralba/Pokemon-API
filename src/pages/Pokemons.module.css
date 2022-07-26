@@ -36,6 +36,7 @@
 
 .prev,
 .next {
+  display: inline-block;
   margin: 0 2rem;
   border-radius: 0.2rem;
   background: #fff;
@@ -76,6 +77,10 @@
 @media only screen and (max-width: 37.5em) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pokemon:hover {
+    transform: none;
   }
 
   .prev:hover,
