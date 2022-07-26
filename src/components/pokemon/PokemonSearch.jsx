@@ -2,34 +2,39 @@ import { useContext, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import PokemonResults from './PokemonResults';
 import PokemonContext from '../../context/pokemon/PokemonContext';
+import AlertContext from '../../context/alert/AlertContext';
 import { getPokemon } from '../../context/pokemon/PokemonActions';
 import classes from './PokemonSearch.module.css';
 
 function PokemonSearch() {
-  const { dispatch } = useContext(PokemonContext);
   const pokemonNameRef = useRef();
+  const { dispatch } = useContext(PokemonContext);
+  const { setAlert } = useContext(AlertContext);
 
   const [searched, setSearched] = useState(false);
 
   const submitHandler = async e => {
     e.preventDefault();
-    dispatch({ type: 'SET_LOADING' });
+    const enteredPokemon = pokemonNameRef.current.value.toLowerCase().trim();
 
     try {
-      const enteredPokemon = pokemonNameRef.current.value.toLowerCase().trim();
-
-      if (enteredPokemon === '') {
-        window.alert('enter a pokemon!');
+      if (enteredPokemon.length === 0) {
+        setAlert(
+          'Please enter a Pokemon Name or Dex # from 1 - 898',
+          'Invalid Pokemon!'
+        );
       } else {
-        const pokemon = await getPokemon(enteredPokemon);
-
         setSearched(true);
+        dispatch({ type: 'SET_LOADING' });
+        const pokemon = await getPokemon(enteredPokemon);
         dispatch({ type: 'GET_POKEMON', payload: pokemon });
-
         pokemonNameRef.current.value = '';
       }
     } catch (err) {
-      window.alert('Pokemon does not exist!');
+      setAlert(
+        'Please enter a valid Pokemon Name or Dex # from 1 - 898',
+        'Pokemon does not exist!'
+      );
       setSearched(false);
       return;
     }
