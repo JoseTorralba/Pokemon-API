@@ -79,6 +79,13 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .prev:hover,
+  .next:hover {
+    background-color: none;
+    color: none;
+    cursor: none;
+  }
 }
 
 @media only screen and (max-width: 25.875em) {

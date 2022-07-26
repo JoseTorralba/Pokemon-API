@@ -37,13 +37,12 @@ const Pokemon = () => {
     const pokemonData = await getPokemons(e.target.dataset.url);
     const pokemonList = await updatePokemons(pokemonData.results);
 
-    // Checks if previous contains null to remove diable class on button
+    // Checks if previous contains null to remove disable class on button
     setDisable(pokemonData.previous);
 
     setNext(pokemonData.next);
     setPrev(pokemonData.previous);
 
-    console.log(pokemonData.next);
     dispatch({ type: 'GET_POKEMON_LIST', payload: pokemonList });
   };
 
@@ -60,7 +59,6 @@ const Pokemon = () => {
 
     setNext(pokemonData.next);
     setPrev(pokemonData.previous);
-    console.log(prev);
 
     dispatch({ type: 'GET_POKEMON_LIST', payload: pokemonList });
   };
