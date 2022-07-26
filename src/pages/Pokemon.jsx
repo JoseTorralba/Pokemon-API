@@ -7,7 +7,7 @@ import PokemonTypes from '../components/pokemon/PokemonTypes';
 import { getPokemon, getPokemonDesc } from '../context/pokemon/PokemonActions';
 import classes from './Pokemon.module.css';
 
-function Pokemon() {
+const Pokemon = () => {
   const { entries, info, loading, dispatch } = useContext(PokemonContext);
   const [searchedPokemon, setSearchedPokemon] = useState(false);
   const [shiny, setShiny] = useState(false);
@@ -146,6 +146,6 @@ function Pokemon() {
       </motion.div>
     </>
   );
-}
+};
 
 export default Pokemon;

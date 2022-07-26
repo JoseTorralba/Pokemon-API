@@ -43,6 +43,10 @@
 
 /* .item giving problems with the last child element */
 
+.list a:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
 .bars,
 .close {
   display: none;

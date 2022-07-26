@@ -11,7 +11,7 @@ import { PokemonProvider } from './context/pokemon/PokemonContext';
 import { AlertProvider } from './context/alert/AlertContext';
 import classes from './App.module.css';
 
-function App() {
+const App = () => {
   return (
     <PokemonProvider>
       <AlertProvider>
@@ -37,6 +37,6 @@ function App() {
       </AlertProvider>
     </PokemonProvider>
   );
-}
+};
 
 export default App;

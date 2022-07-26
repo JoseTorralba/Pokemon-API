@@ -6,7 +6,7 @@ import AlertContext from '../../context/alert/AlertContext';
 import { getPokemon } from '../../context/pokemon/PokemonActions';
 import classes from './PokemonSearch.module.css';
 
-function PokemonSearch() {
+const PokemonSearch = () => {
   const pokemonNameRef = useRef();
   const { dispatch } = useContext(PokemonContext);
   const { setAlert } = useContext(AlertContext);
@@ -70,6 +70,6 @@ function PokemonSearch() {
       {searched && <PokemonResults />}
     </motion.div>
   );
-}
+};
 
 export default PokemonSearch;

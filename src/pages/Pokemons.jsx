@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 import classes from './Pokemons.module.css';
 
-function Pokemon() {
+const Pokemon = () => {
   const { pokemons, dispatch, loading } = useContext(PokemonContext);
   const [next, setNext] = useState();
   const [prev, setPrev] = useState();
@@ -106,6 +106,6 @@ function Pokemon() {
       </div>
     </>
   );
-}
+};
 
 export default Pokemon;

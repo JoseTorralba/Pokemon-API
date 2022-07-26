@@ -1,11 +1,5 @@
 import PokemonSearch from '../components/pokemon/PokemonSearch';
 
-function Home() {
-  return (
-    <>
-      <PokemonSearch />
-    </>
-  );
-}
+const Home = () => <PokemonSearch />;
 
 export default Home;
