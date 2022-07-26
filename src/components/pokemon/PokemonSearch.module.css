@@ -69,7 +69,7 @@
   font-size: 1.7rem;
   font-weight: 900;
   margin-top: 1.5rem;
-  padding: 1.6rem 0;
+  padding: 1.8rem 1rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -143,8 +143,7 @@
   }
 
   .button {
-    font-size: 1.3rem;
-
+    /* font-size: 1.3rem; */
     width: 8rem;
   }
 }
