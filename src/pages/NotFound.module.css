@@ -1,0 +1,41 @@
+.container {
+  color: #fff;
+  font-size: 4rem;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+.link {
+  color: #fff;
+  font-size: 2.5rem;
+  text-decoration: none;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 75em) {
+  .container {
+    padding: 0 4rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .text {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 25.875em) {
+  .container {
+    padding: 0;
+    text-align: center;
+  }
+
+  .text {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+  }
+}

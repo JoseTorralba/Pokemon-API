@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Loading from '../components/layout/Loading';
 import PokemonContext from '../context/pokemon/PokemonContext';
 import PokemonTypes from '../components/pokemon/PokemonTypes';
@@ -41,7 +42,15 @@ function Pokemon() {
 
   return (
     <>
-      <div className={classes.pokemon}>
+      <motion.div
+        initial={{
+          opacity: 0,
+          translateY: 100,
+        }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.3, delay: 1 * 0.1 }}
+        className={classes.pokemon}
+      >
         {searchedPokemon && (
           <div className={classes.card}>
             <div className={classes.data}>
@@ -118,8 +127,15 @@ function Pokemon() {
             </div>
           </div>
         )}
-      </div>
-      <div className={classes.buttons}>
+      </motion.div>
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        className={classes.buttons}
+      >
         <Link to='/' className={classes.button}>
           Search For a Pokemon
         </Link>
@@ -127,7 +143,7 @@ function Pokemon() {
         <Link to='/pokemons' className={classes.button}>
           View All Pokemon
         </Link>
-      </div>
+      </motion.div>
     </>
   );
 }

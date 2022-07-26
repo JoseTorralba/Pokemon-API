@@ -32,19 +32,16 @@
 
 .icon {
   font-size: 3rem;
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
 }
 
 .list {
   font-size: 1.7rem;
   display: flex;
   align-items: center;
-  margin-right: -24px;
 }
 
-.list a:not(:last-child) {
-  margin-right: 1.5rem;
-}
+/* .item giving problems with the last child element */
 
 .bars,
 .close {
@@ -56,6 +53,7 @@
   background: none;
   border: none;
   outline: none;
+  display: none !important;
 }
 
 @media only screen and (max-width: 37.5em) {

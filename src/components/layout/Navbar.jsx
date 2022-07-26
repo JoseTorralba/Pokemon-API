@@ -12,8 +12,8 @@ const Navbar = () => {
     <>
       <nav className={classes.nav}>
         <div className={classes.logo}>
-          <MdCatchingPokemon className={classes.icon} />
           <Link to='/' className={classes.title}>
+            <MdCatchingPokemon className={classes.icon} />
             Pokemon API
           </Link>
         </div>

@@ -5,6 +5,7 @@
   display: block; /* Overwrites <Link> styles */
   position: relative;
   text-align: center;
+  text-decoration: none;
   text-transform: capitalize;
   transition: all 0.2s;
 }
@@ -51,6 +52,7 @@
 .name {
   font-size: 3rem;
   font-weight: 600;
+
   text-transform: capitalize;
 }
 
