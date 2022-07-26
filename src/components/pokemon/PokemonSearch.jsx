@@ -62,7 +62,7 @@ const PokemonSearch = () => {
               ref={pokemonNameRef}
             />
             <button type='submit' className={classes.button}>
-              Enter
+              Go
             </button>
           </div>
         </form>

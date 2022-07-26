@@ -49,8 +49,6 @@
 
 .prev:hover,
 .next:hover {
-  background-color: #0082c8;
-  color: #fff;
   cursor: pointer;
 }
 
@@ -82,8 +80,6 @@
 
   .prev:hover,
   .next:hover {
-    background-color: none;
-    color: none;
     cursor: none;
   }
 }

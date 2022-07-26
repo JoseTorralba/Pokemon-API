@@ -127,12 +127,10 @@
   }
 
   .value {
-    padding: 0.8rem 1rem;
     padding-right: 13rem;
   }
 
   .button {
-    padding: 0.8rem 1rem;
     width: 10rem;
   }
 }
@@ -143,7 +141,6 @@
   }
 
   .button {
-    /* font-size: 1.3rem; */
     width: 8rem;
   }
 }
