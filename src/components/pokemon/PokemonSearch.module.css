@@ -31,10 +31,8 @@
 
 .text {
   font-size: 1.5rem;
-}
-
-.text:not(:last-child) {
-  margin-bottom: 0.6rem;
+  margin-bottom: 2.5rem;
+  margin-top: 0.5rem;
 }
 
 .input {
@@ -47,7 +45,7 @@
   border-bottom-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
   padding: 1.8rem 1rem;
   padding-right: 18rem;
 
@@ -62,19 +60,17 @@
   background-color: #0082c8;
   border: 2px solid #0082c8;
   border: none;
-  /* border-left: none; */
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   color: #fff;
   font-size: 1.5rem;
   font-weight: 900;
-  margin-top: 1.5rem;
-  padding: 1.9rem 1rem;
   position: absolute;
   top: 0;
   right: 0;
   outline: none;
   width: 15rem;
+  height: 100%;
 }
 
 .button:hover {
@@ -142,5 +138,11 @@
 
   .button {
     width: 8rem;
+  }
+}
+
+@media only screen and (max-width: 20em) {
+  .form {
+    padding: 4rem 3rem 4rem 3rem;
   }
 }

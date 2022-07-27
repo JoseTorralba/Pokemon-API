@@ -52,7 +52,8 @@ const PokemonSearch = () => {
           <form onSubmit={submitHandler} className={classes.form}>
             <h1 className={classes.formTitle}>Search For a Pokemon</h1>
             <p className={classes.text}>
-              Enter a Pokemon's name or it's national Pokedex number
+              Enter a Pokemon's name or it's national Pokedex number from 1 -
+              898
             </p>
 
             <div className={classes.input}>
