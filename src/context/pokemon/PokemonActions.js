@@ -8,14 +8,7 @@ export const getPokemon = async name => {
   return response.data;
 };
 
-// Gets a list of Pokemon
-export const getPokemons = async (test = '/pokemon') => {
-  const response = await pokemon.get(test);
-
-  return response.data;
-};
-
-// Refactor for getPokemons
+// Gets Pokemon Description (Refactor later)
 export const getPokemonDesc = async name => {
   const response = await pokemon.get(name);
 
@@ -26,13 +19,23 @@ export const getPokemonDesc = async name => {
   return description[0].flavor_text;
 };
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// Loops Through List of Pokemons
-export const updatePokemons = async url => {
+// Gets a list of Pokemon
+export const getPokemons = async (limit = 20, offset = 0) => {
+  try {
+    let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+    const response = await axios.get(url);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log('error: ', error);
+  }
+};
+
+// Loops Through List of Pokemon
+export const updatePokemons = async res => {
   const response = Promise.all(
-    url.map(async data => {
-      const pokeInfo = await pokemon.get(`/pokemon/${data.name}`);
+    res.map(async data => {
+      const pokeInfo = await pokemon.get(`${data.url}`);
       return pokeInfo.data;
     })
   );

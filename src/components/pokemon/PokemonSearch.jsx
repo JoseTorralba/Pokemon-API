@@ -41,34 +41,36 @@ const PokemonSearch = () => {
   };
 
   return (
-    <motion.div
-      className={classes.container}
-      initial={{ opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.1 }}
-    >
-      <div className={classes.box}>
-        <form onSubmit={submitHandler} className={classes.form}>
-          <h1 className={classes.formTitle}>Search For a Pokemon</h1>
-          <p className={classes.text}>
-            Enter a Pokemon's name or it's national Pokedex number
-          </p>
+    <>
+      <motion.div
+        className={classes.container}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.1 }}
+      >
+        <div className={classes.box}>
+          <form onSubmit={submitHandler} className={classes.form}>
+            <h1 className={classes.formTitle}>Search For a Pokemon</h1>
+            <p className={classes.text}>
+              Enter a Pokemon's name or it's national Pokedex number
+            </p>
 
-          <div className={classes.input}>
-            <input
-              className={classes.value}
-              type='text'
-              placeholder='Search...'
-              ref={pokemonNameRef}
-            />
-            <button type='submit' className={classes.button}>
-              Go
-            </button>
-          </div>
-        </form>
-      </div>
+            <div className={classes.input}>
+              <input
+                className={classes.value}
+                type='text'
+                placeholder='Search...'
+                ref={pokemonNameRef}
+              />
+              <button type='submit' className={classes.button}>
+                Go
+              </button>
+            </div>
+          </form>
+        </div>
+      </motion.div>
       {searched && <PokemonResults />}
-    </motion.div>
+    </>
   );
 };
 

@@ -9,58 +9,45 @@ import classes from './Pokemons.module.css';
 
 const Pokemon = () => {
   const { pokemons, dispatch, loading } = useContext(PokemonContext);
-  const [next, setNext] = useState();
-  const [prev, setPrev] = useState();
 
-  const [disable, setDisable] = useState('');
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [prevBtn, setPrevBtn] = useState();
+  const [nextBtn, setNextBtn] = useState();
+
+  const pokeOffset = 20;
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' });
 
-    const getPokemonData = async () => {
-      const pokemonData = await getPokemons();
+    const fetchPokemon = async () => {
+      const pokemonData = await getPokemons(pokeOffset, pokeOffset * page);
       const pokemonList = await updatePokemons(pokemonData.results);
-      setNext(pokemonData.next);
 
-      setDisable(pokemonData.previous);
+      setTotalPages(Math.ceil(pokemonData.count / 20));
+
+      setPrevBtn(pokemonData.previous);
+      setNextBtn(pokemonData.next);
 
       dispatch({ type: 'GET_POKEMON_LIST', payload: pokemonList });
     };
 
-    getPokemonData();
-  }, [dispatch]);
+    fetchPokemon();
+  }, [page, dispatch]);
 
   const nextPageHandler = async e => {
     e.preventDefault();
-    dispatch({ type: 'SET_LOADING' });
 
-    const pokemonData = await getPokemons(e.target.dataset.url);
-    const pokemonList = await updatePokemons(pokemonData.results);
-
-    // Checks if previous contains null to remove disable class on button
-    setDisable(pokemonData.previous);
-
-    setNext(pokemonData.next);
-    setPrev(pokemonData.previous);
-
-    dispatch({ type: 'GET_POKEMON_LIST', payload: pokemonList });
+    if (page + 1 !== totalPages) {
+      setPage(page + 1);
+    }
   };
 
   const prevPageHandler = async e => {
     e.preventDefault();
-    dispatch({ type: 'SET_LOADING' });
-
-    const pokemonData = await getPokemons(e.target.dataset.url);
-    const pokemonList = await updatePokemons(pokemonData.results);
-
-    if (pokemonData.previous === null) {
-      setDisable(null);
+    if (page > 0) {
+      setPage(page - 1);
     }
-
-    setNext(pokemonData.next);
-    setPrev(pokemonData.previous);
-
-    dispatch({ type: 'GET_POKEMON_LIST', payload: pokemonList });
   };
 
   if (loading) return <Loading />;
@@ -76,7 +63,7 @@ const Pokemon = () => {
               translateY: 50,
             }}
             animate={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.06 }}
+            transition={{ duration: 0.5, delay: i * 0.03 }}
           >
             <PokemonItem key={poke.id} pokemon={poke} cname={classes.pokemon} />
           </motion.div>
@@ -86,18 +73,22 @@ const Pokemon = () => {
       <div className={classes.pagination}>
         <button
           onClick={prevPageHandler}
-          data-url={prev}
           className={`${classes.prev} ${
-            disable === null ? `${classes.disabled}` : ''
+            prevBtn === null ? `${classes.disabled}` : ''
           }`}
         >
           Prev
         </button>
 
+        <div className={classes.pages}>
+          {page + 1} of {totalPages}
+        </div>
+
         <button
           onClick={nextPageHandler}
-          data-url={next}
-          className={classes.next}
+          className={`${classes.next} ${
+            nextBtn === null ? `${classes.disabled}` : ''
+          }`}
         >
           Next
         </button>
