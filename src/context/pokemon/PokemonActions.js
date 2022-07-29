@@ -8,7 +8,7 @@ export const getPokemon = async name => {
   return response.data;
 };
 
-// Gets Pokemon Description (Refactor later)
+// Gets Pokemon Description
 export const getPokemonDesc = async name => {
   const response = await pokemon.get(name);
 
@@ -24,14 +24,13 @@ export const getPokemons = async (limit = 20, offset = 0) => {
   try {
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const response = await axios.get(url);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log('error: ', error);
   }
 };
 
-// Loops Through List of Pokemon
+// Loops Through List of Pokemon urls
 export const updatePokemons = async res => {
   const response = Promise.all(
     res.map(async data => {

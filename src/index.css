@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #0082c8;
+  --white: #fff;
+  --black: #000;
+}
+
 html {
   font-size: 62.5%;
 }

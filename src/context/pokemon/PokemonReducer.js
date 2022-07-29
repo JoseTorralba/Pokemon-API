@@ -16,7 +16,7 @@ const pokemonReducer = (state, action) => {
     case 'GET_POKEMON_ENTRY':
       return {
         ...state,
-        entries: action.payload,
+        description: action.payload,
         loading: false,
       };
     case 'GET_POKEMON_LIST':

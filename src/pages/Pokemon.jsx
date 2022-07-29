@@ -8,7 +8,7 @@ import { getPokemon, getPokemonDesc } from '../context/pokemon/PokemonActions';
 import classes from './Pokemon.module.css';
 
 const Pokemon = () => {
-  const { entries, info, loading, dispatch } = useContext(PokemonContext);
+  const { description, info, loading, dispatch } = useContext(PokemonContext);
   const [searchedPokemon, setSearchedPokemon] = useState(false);
   const [shiny, setShiny] = useState(false);
   const params = useParams();
@@ -66,34 +66,34 @@ const Pokemon = () => {
               </div>
 
               <div className={classes.info}>
-                <p className={classes.dex}>
+                <p className={classes.data}>
                   <span className={classes.label}>
                     {('000' + id).slice(-3)}
                   </span>
-                  <span className={classes.test}>Dex. #</span>
+                  <span className={classes.text}>Dex. #</span>
                 </p>
 
-                <p className={classes.dex}>
+                <p className={classes.data}>
                   <span className={classes.label}>{weight}kg</span>
-                  <span className={classes.test}>Weight</span>
+                  <span className={classes.text}>Weight</span>
                 </p>
 
-                <p className={classes.dex}>
+                <p className={classes.data}>
                   <span className={classes.label}>{height}m</span>
-                  <span className={classes.test}>Height</span>
+                  <span className={classes.text}>Height</span>
                 </p>
-                <p className={classes.dex}>
-                  <span className={classes.label}>
+                <p className={classes.data}>
+                  <span className={classes.label}>Shiny</span>
+                  <span>
                     <input
                       className={classes.toggle}
                       type='checkbox'
                       onClick={shinyHandler}
                     />
                   </span>
-                  <span className='test'>Shiny</span>
                 </p>
               </div>
-              <div className={classes.description}>{entries}</div>
+              <div className={classes.description}>{description}</div>
             </div>
 
             <div>

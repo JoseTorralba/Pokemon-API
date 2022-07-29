@@ -28,6 +28,7 @@ const Navbar = () => {
           <Link to='/pokemons' className={classes.item} onClick={toggleNav}>
             Pokemon
           </Link>
+
           <button className={classes.close} onClick={toggleNav}>
             <FaTimes />
           </button>
